@@ -57,8 +57,8 @@ const patientSchema = new Schema({
     comment: String
   }],
   assignedDoctor: {
-    type: ObjectId,
-    ref: Doctor,
+    type: Schema.Types.ObjectId,
+    ref: "Doctor",
     required: true
   },
   lastUpdate: Date
