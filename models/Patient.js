@@ -38,9 +38,18 @@ const patientSchema = new Schema({
   }],
   bloodPressureData: [{
     isMeasured: Boolean,
-    min: String,
-    max: String,
-    target: String,
+    min: {
+      systolic: Number,
+      diastolic: Number
+  },
+    max: {
+      systolic: Number,
+      diastolic: Number
+  },
+    target: {
+      systolic: Number,
+      diastolic: Number
+  },
     date: Date,
     value: [{
             systolic: Number,
