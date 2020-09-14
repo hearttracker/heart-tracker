@@ -14,12 +14,14 @@ router.post('/signup', (req, res, next) => {
     res.render('auth/signup', {
       message: 'Invalid Email address'
     });
+    return;
   }
 
   if(password.length < 8) {
     res.render('auth/signup', {
       message: 'The password needs to be at least 8 characters long'
     });
+    return;
   }
 
   Doctor.findOne({email: email}).then(found => {
