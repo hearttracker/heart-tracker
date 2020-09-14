@@ -72,4 +72,10 @@ app.use('/', index);
 const auth = require('./routes/auth');
 app.use('/', auth);
 
+const doctor = require('./routes/doctor');
+app.use('/', doctor);
+
+// const patient = require('./routes/patient');
+// app.use('/', patient);
+
 module.exports = app;

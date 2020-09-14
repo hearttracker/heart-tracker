@@ -1,0 +1,45 @@
+<h1>Nuevo Paciente 2</h1>
+
+{{!-- {{#with currentPatient}} --}}
+  <form action="/doctor/newPatient3" method="POST">
+  <div>
+  <label for="totalColesterol">Total Colesterol:</label>
+  <input type="text" name="totalColesterol" id="totalColesterol" value="{{totalColesterol}}">
+
+    <label for="ldl">LDL:</label>
+  <input type="text" name="ldl" id="ldl" value="{{ldl}}">
+
+    <label for="hdl">HDL:</label>
+  <input type="text" name="hdl" id="hdl" value="{{hdl}}">
+</div>
+<div>
+
+    <label for="triglycerides">Triglycerides:</label>
+  <input type="number" name="triglycerides" id="triglycerides" value="{{triglycerides}}">
+
+    <label for="urea">Urea:</label>
+  <input type="number" name="urea" id="urea" value="{{urea}}">
+
+    <label for="creatinine">Creatinine:</label>
+  <input type="number" name="creatinine" id="creatinine" value="{{creatinine}}">
+</div>
+<div>
+    <label for="potassium">Potassium:</label>
+  <input type="number" name="potassium" id="potassium" value="{{potassium}}">
+
+    <label for="sodium">Sodium:</label>
+  <input type="text" name="sodium" id="sodium" value="{{sodium}}">
+
+      <label for="basalBloodGlucose">Basal Blood Glucose:</label>
+  <input type="text" name="basalBloodGlucose" id="basalBloodGlucose" value="{{basalBloodGlucose}}">
+  </div>
+</div>
+
+<div>
+  <label for="allergies">Allergies:</label>
+  <input type="text" name="allergies" id="allergies" value="{{allergies}}">
+</div>
+<a href="/doctor/newPatient1">back</a> <button type="submit">Next</button>
+</form>
+
+{{!-- {{/with}} --}}
