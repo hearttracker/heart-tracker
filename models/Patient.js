@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const patientSchema = new Schema({
   patientId: Number,
+  healthInsuranceId: Number,
   firstName: {
     type: String,
     required: true
@@ -37,6 +38,9 @@ const patientSchema = new Schema({
   }],
   bloodPressureData: [{
     isMeasured: Boolean,
+    min: String,
+    max: String,
+    target: String,
     date: Date,
     value: [{
             systolic: Number,
@@ -46,12 +50,18 @@ const patientSchema = new Schema({
   }],
   heartFrequencyData: [{
     isMeasured: Boolean,
+    min: Number,
+    max: Number,
+    target: Number,
     date: Date,
     value: Number,
     comment: String
   }],
   bloodSugarData: [{
     isMeasured: Boolean,
+    min: Number,
+    max: Number,
+    target: Number,
     date: Date,
     value: Number,
     comment: String

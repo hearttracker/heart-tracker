@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const {isLoggedIn} = require('./middlewares');
+const Doctor = require('../models/Doctor');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -8,9 +9,14 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/overview', isLoggedIn(), (req, res, next) => {
-  //check if user is logged in
-  //render list of patients of req.session.user
-  res.render('doctor/overview');
+  const doctor = Doctor.findById(req.session.user._id)
+  .then(doctor => {
+    console.log(doctor);
+    res.render('doctor/overview', {
+      doctor: doctor
+    });
+  })
+  .catch(err => next(err));
 });
 
 module.exports = router;
