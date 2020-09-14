@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const {isLoggedIn} = require('./middlewares');
 const Doctor = require('../models/Doctor');
+const Patient = require('../models/Patient');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -18,5 +19,9 @@ router.get('/overview', isLoggedIn(), (req, res, next) => {
   })
   .catch(err => next(err));
 });
+
+router.get('/addPatient', (req, res, next) => {
+
+})
 
 module.exports = router;

@@ -34,7 +34,7 @@ const patientSchema = new Schema({
   },
   treatments: [{
     type: Schema.Types.ObjectId,
-    ref: 'Treatment'
+    ref: 'Treatment',
   }],
   bloodPressureData: [{
     isMeasured: Boolean,
@@ -67,8 +67,8 @@ const patientSchema = new Schema({
     comment: String
   }],
   assignedDoctor: {
-    type: ObjectId,
-    ref: Doctor,
+    type: Schema.Types.ObjectId,
+    ref: 'Doctor',
     required: true
   },
   lastUpdate: Date
