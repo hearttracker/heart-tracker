@@ -32,11 +32,8 @@ const patientSchema = new Schema({
     enum: ['Low', 'Medium', 'High'],
   },
   treatments: [{
-    name: String,
-    dosis: String,
-    startDate: Date,
-    endDate: Date,
-    comments: String
+    type: Schema.Types.ObjectId,
+    ref: 'Treatment'
   }],
   bloodPressureData: [{
     isMeasured: Boolean,
