@@ -30,7 +30,7 @@ const patientSchema = new Schema({
   alertLevel: {
     type: String,
     enum: ['Low', 'Medium', 'High'],
-  }
+  },
   treatments: [{
     name: String,
     dosis: String,
@@ -60,8 +60,8 @@ const patientSchema = new Schema({
     comment: String
   }],
   assignedDoctor: {
-    type: ObjectId,
-    ref: Doctor,
+    type: Schema.Types.ObjectId,
+    ref: "Doctor",
     required: true
   },
   lastUpdate: Date

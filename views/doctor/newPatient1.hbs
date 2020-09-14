@@ -1,0 +1,34 @@
+<h1>Nuevo Paciente</h1>
+{{!-- {{#with currentPatient}} --}}
+<div>
+  <form action="/doctor/newPatient2" method="POST">
+  <div>
+  <label for="firstName">First Name:</label>
+  <input type="text" name="firstName" id="firstName" value="{{firstName}}">
+
+    <label for="lastName">Last Name:</label>
+  <input type="text" name="lastName" id="lastName" value="{{lastName}}">
+
+    <label for="secondLastName">Second Last Name:</label>
+  <input type="text" name="secondLastName" id="secondLastName" value="{{secondLastName}}">
+
+    <label for="dateOfBirth">Date of birth:</label>
+  <input type="date" name="dateOfBirth" id="dateOfBirth" value="{{dateOfBirth}}">
+</div>
+<div>
+    <label for="id">ID:</label>
+  <input type="number" name="id" id="id" value="{{id}}">
+
+    <label for="tis">TIS:</label>
+  <input type="number" name="tis" id="tis" value="{{tis}}">
+
+    <label for="phoneNumber">Phone:</label>
+  <input type="number" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
+
+    <label for="email">Email:</label>
+  <input type="text" name="email" id="email" value="{{email}}">
+  </div>
+</div>
+<button type="submit">Next</button>
+  </form>
+  {{!-- {{/with}} --}}
