@@ -39,6 +39,7 @@ const patientSchema = new Schema({
     comments: String
   }],
   bloodPressureData: [{
+    isMeasured: Boolean,
     date: Date,
     value: [{
             systolic: Number,
@@ -47,11 +48,13 @@ const patientSchema = new Schema({
     comment: String
   }],
   heartFrequencyData: [{
+    isMeasured: Boolean,
     date: Date,
     value: Number,
     comment: String
   }],
   bloodSugarData: [{
+    isMeasured: Boolean,
     date: Date,
     value: Number,
     comment: String
