@@ -21,6 +21,18 @@ router.get('/overview', isLoggedIn(), (req, res, next) => {
   .catch(err => next(err));
 });
 
+router.get('/patient/:id', (req, res, next) => {
+  Patient.findById(req.params.id).then(patient => {
+    const patientAge = new Date().getFullYear() - patient.birthDate.getFullYear();
+    res.render('doctor/patientDashboard', {
+      patient: patient,
+      patientAge: patientAge
+    });
+    console.log(patient);
+  })
+  .catch(err => next(err));
+}); 
+
 // router.get('/addPatient', (req, res, next) => {
 //   Patient.create({
 //     patientId: 111111111,
