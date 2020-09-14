@@ -1,0 +1,16 @@
+<h3>Log In</h3>
+<form action="/login" method="POST">
+<label for="email">Email:</label>
+<input type="text" name="email" id="email" required><br>
+<label for="password">Password:</label>
+<input type="password" name="password" id="password" required><br>
+<button type="submit">Log In</button>
+</form>
+
+<a href="/signup">
+<h4>No account yet? Click here to sign up</h4>
+</a>
+
+{{#if message}}
+<p style="color: red">{{message}}</p>
+{{/if}}
