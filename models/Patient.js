@@ -36,7 +36,7 @@ const patientSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Treatment',
   }],
-  bloodPressureData: [{
+  bloodPressureData: {
     isMeasured: Boolean,
     min: {
       systolic: Number,
@@ -50,31 +50,35 @@ const patientSchema = new Schema({
       systolic: Number,
       diastolic: Number
   },
-    date: Date,
-    value: [{
+    values: [{
             systolic: Number,
-            diastolic: Number
+            diastolic: Number,
+            date: Date,
+            comment: String
         }],
-    comment: String
-  }],
-  heartFrequencyData: [{
+  },
+  heartFrequencyData: {
     isMeasured: Boolean,
     min: Number,
     max: Number,
     target: Number,
-    date: Date,
-    value: Number,
-    comment: String
-  }],
-  bloodSugarData: [{
+    values: [{
+      date: Date,
+      value: Number,
+      comment: String
+    }]
+  },
+  bloodSugarData: {
     isMeasured: Boolean,
     min: Number,
     max: Number,
     target: Number,
-    date: Date,
-    value: Number,
-    comment: String
-  }],
+    values: [{
+      date: Date,
+      value: Number,
+      comment: String
+    }]
+  },
   assignedDoctor: {
     type: Schema.Types.ObjectId,
     ref: 'Doctor',
