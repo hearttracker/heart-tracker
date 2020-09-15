@@ -1,9 +1,12 @@
 
+
 <div class='patientHeader'>
 <div id='contactInfo'> 
   <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Age: {{patientAge}}</span> <span>Patient ID: {{patient.patientId}}</span>
  <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email: {{patient.contact.email}}</span>
  </div>
+
+ <div style="display:none" id='hiddenId'>{{patient._id}}</div>
 
 <div id='patientValues'>
   <div class='measurements'>
@@ -40,39 +43,52 @@
   </div>
 
   <div class='graphContainer'>
-    
-    <div id='treatmentsContainer'>
+    <div id='treatmentsContainer' class='treatment'>
       <h2>Treatments</h2>
-      {{#each patient.treatments}}
-      <div class="treatmentDropdown">
-        <span>{{name}}</span>
-        <div class="dropdown-content">
-          <p>Hello World!</p>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-
+{{!-- 
   <div class="btn-group">
   <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Large button
+    {{patients.treatments.[0].name}}
   </button>
   <div class="dropdown-menu">
-    ...
+    <p>Type of Drug:</p>
+    <div>
+      <h4>Dose</h4>
+      {{#if doseMeals.isSelected}}
+      Breakfast: {{doseMeals.breakfast}}
+      Lunch: {{doseMeals.lunch}}
+      Dinner: {{doseMeals.dinner}}
+      Night: {{doseMeals.night}}
+      {{else}}
+      {{doseTime.quantity}} pieces each {{doseTime.intervall}} {{doseTime.timeMeasure}}
+      {{/if}}
+      <p></p>
+    </div>
+    <div>
+      <h4>Duration</h4>
+      <p>From {{dateFormat startDate "d, MMM, YYYY"}} To {{dateFormat endDate "DD, MMM, YYYY"}}</p>
+    </div>
+    <div>
+      <h4>Recommendations</h4>
+      <p>{{recommendation}}</p>
+    </div>
   </div>
+</div> --}}
 </div>
 
 
-    <div id='heartRateContainer'>
+    <div id='heartRateContainer' class='treatment'>
       <h2>Blood Pressure and Heart Frequency</h2>
-      <canvas id="myChart"></canvas>
+      <canvas id="heartRateGraph"></canvas>
     </div>
 
-    <div id='bloodSugarContainer'>
+    <div id='bloodSugarContainer' class='treatment'>
       <h2>Blood Sugar</h2>
-      <canvas id="myChart"></canvas>
+      <canvas id="bloodSugarChart"></canvas>
     </div>
   </div>
 
 </div>
 </div>
+
+<script src='/javascripts/chart.js'></script>
