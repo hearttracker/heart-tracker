@@ -8,30 +8,35 @@
   <button type="submit">Search</button>
 </div>
 <div class="tablecontainer">
+  <table class="table">
   <thead>
     <tr>
-      <td>Alert</td>
-      <td>Name</td>
-      <td>Surname</td>
-      <td>Birth Date</td>
-      <td>Last Update</td>
+      <th>Alert</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth Date</th>
+      <th>Last Update</th>
     </tr>
   </thead>
   <br>
   <tbody>
     {{#each doctor.patients}}
-    <a href="/patient/{{_id}}">
     <tr>
       <td>{{alertLevel}}</td>
-      <td>{{firstName}}</td>
+      <td>
+        <a href="/patient/{{_id}}">
+        {{firstName}}</a>
+        </td>
       <td>{{lastName}}</td>
-      <td>{{birthDate}}</td>
-      <td>{{lastUpdate}}</td>
+      <td>{{dateFormat birthDate "d, MMM, YYYY"}}</td>
+      <td>{{dateFormat lastUpdate "d, MMM, YYYY"}}</td>
+      <td><a href="/patient/{{_id}}/edit">Edit</a></td>
     </tr>
+  
     <br>
-    </a>
+   
     {{/each}}
   </tbody>
 </table>
 </div>
-<table>
+
