@@ -3,6 +3,7 @@ const router  = express.Router();
 const {isLoggedIn} = require('./middlewares');
 const Doctor = require('../models/Doctor');
 const Patient = require('../models/Patient');
+const Treatment = require('../models/Treatment')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -23,7 +24,7 @@ router.get('/overview', isLoggedIn(), (req, res, next) => {
 router.get('/patient/:id', (req, res, next) => {
   console.log('route called');
   Patient.findById(req.params.id)
-  // .populate('treatments')
+  .populate('treatments')
   .then(patient => {
     console.log(patient);
     res.render('doctor/patientDashboard', {

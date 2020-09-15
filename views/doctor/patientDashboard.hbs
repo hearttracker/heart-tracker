@@ -40,16 +40,34 @@
   </div>
 
   <div class='graphContainer'>
+    
     <div id='treatmentsContainer'>
       <h2>Treatments</h2>
       {{#each patient.treatments}}
-      <select name="treatment" id="treatment">{{name}}</select>
+      <div class="treatmentDropdown">
+        <span>{{name}}</span>
+        <div class="dropdown-content">
+          <p>Hello World!</p>
+        </div>
+      </div>
       {{/each}}
     </div>
+
+  <div class="btn-group">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Large button
+  </button>
+  <div class="dropdown-menu">
+    ...
+  </div>
+</div>
+
+
     <div id='heartRateContainer'>
       <h2>Blood Pressure and Heart Frequency</h2>
       <canvas id="myChart"></canvas>
     </div>
+
     <div id='bloodSugarContainer'>
       <h2>Blood Sugar</h2>
       <canvas id="myChart"></canvas>
