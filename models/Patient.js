@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const patientSchema = new Schema({
   patientId: Number,
+  healthInsuranceId: Number,
   firstName: {
     type: String,
     required: true
@@ -33,10 +34,22 @@ const patientSchema = new Schema({
   },
   treatments: [{
     type: Schema.Types.ObjectId,
-    ref: 'Treatment'
+    ref: 'Treatment',
   }],
   bloodPressureData: [{
     isMeasured: Boolean,
+    min: {
+      systolic: Number,
+      diastolic: Number
+  },
+    max: {
+      systolic: Number,
+      diastolic: Number
+  },
+    target: {
+      systolic: Number,
+      diastolic: Number
+  },
     date: Date,
     value: [{
             systolic: Number,
@@ -46,19 +59,25 @@ const patientSchema = new Schema({
   }],
   heartFrequencyData: [{
     isMeasured: Boolean,
+    min: Number,
+    max: Number,
+    target: Number,
     date: Date,
     value: Number,
     comment: String
   }],
   bloodSugarData: [{
     isMeasured: Boolean,
+    min: Number,
+    max: Number,
+    target: Number,
     date: Date,
     value: Number,
     comment: String
   }],
   assignedDoctor: {
     type: Schema.Types.ObjectId,
-    ref: "Doctor",
+    ref: 'Doctor',
     required: true
   },
   lastUpdate: Date

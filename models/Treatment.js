@@ -16,7 +16,7 @@ const treatmentSchema = new Schema({
       interval: Number,
       timeMeasure: {
         type: String,
-        enum: ['days', 'hours', 'minutes']
+        enum: ['month', 'weeks', 'days', 'hours']
       },
     },
     startDate: Date,
