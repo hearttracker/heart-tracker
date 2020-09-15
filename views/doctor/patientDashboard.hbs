@@ -1,7 +1,60 @@
 
-
-<div>
+<div class='patientHeader'>
+<div id='contactInfo'> 
   <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Age: {{patientAge}}</span> <span>Patient ID: {{patient.patientId}}</span>
  <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email: {{patient.contact.email}}</span>
  </div>
 
+<div id='patientValues'>
+  <div class='measurements'>
+  <h4>Last Measurements</h4>
+  <thead>
+    <tr>
+      <td>Cholesterol</td>
+      <td>LDL</td>
+      <td>HDL</td>
+      <td>Triglycerides</td>
+      <td>Urea</td>
+      <td>Creatine</td>
+      <td>Potassium</td>
+      <td>Sodium</td>
+      <td>Basal glycemia</td>
+    </tr>
+    <br>
+    <tr>
+      <td>{{patient.lastMeasurements.totalColesterol}}</td>
+      <td>{{patient.lastMeasurements.ldl}}</td>
+      <td>{{patient.lastMeasurements.hdl}}</td>
+      <td>{{patient.lastMeasurements.triglycerides}}</td>
+      <td>{{patient.lastMeasurements.urea}}</td>
+      <td>{{patient.lastMeasurements.creatinine}}</td>
+      <td>{{patient.lastMeasurements.potassium}}</td>
+      <td>{{patient.lastMeasurements.sodium}}</td>
+      <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
+    </tr>
+  </thead>
+  </div>
+  <div class='measurements'> 
+    <h4>Allergies:</h4>
+    <p>{{patient.allergies}}</p>
+  </div>
+
+  <div class='graphContainer'>
+    <div id='treatmentsContainer'>
+      <h2>Treatments</h2>
+      {{#each patient.treatments}}
+      <select name="treatment" id="treatment">{{name}}</select>
+      {{/each}}
+    </div>
+    <div id='heartRateContainer'>
+      <h2>Blood Pressure and Heart Frequency</h2>
+      <canvas id="myChart"></canvas>
+    </div>
+    <div id='bloodSugarContainer'>
+      <h2>Blood Sugar</h2>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+</div>
+</div>

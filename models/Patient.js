@@ -28,6 +28,17 @@ const patientSchema = new Schema({
   },
   diagnosis: String,
   allergies: String,
+  lastMeasurements: {
+    totalColesterol: Number,
+    ldl: Number,
+    hdl: Number,
+    triglycerides: Number,
+    urea: Number,
+    creatinine: Number,
+    potassium: Number,
+    sodium: Number,
+    basalBloodGlucose: Number,
+  },
   alertLevel: {
     type: String,
     enum: ['Low', 'Medium', 'High'],

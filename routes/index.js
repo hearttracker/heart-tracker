@@ -13,7 +13,6 @@ router.get('/overview', isLoggedIn(), (req, res, next) => {
   Doctor.findById(req.session.user._id)
   .populate('patients')
   .then(doctor => {
-    console.log(doctor);
     res.render('doctor/overview', {
       doctor: doctor
     });
@@ -22,13 +21,14 @@ router.get('/overview', isLoggedIn(), (req, res, next) => {
 });
 
 router.get('/patient/:id', (req, res, next) => {
-  Patient.findById(req.params.id).then(patient => {
-    const patientAge = new Date().getFullYear() - patient.birthDate.getFullYear();
+  console.log('route called');
+  Patient.findById(req.params.id)
+  // .populate('treatments')
+  .then(patient => {
+    console.log(patient);
     res.render('doctor/patientDashboard', {
       patient: patient,
-      patientAge: patientAge
     });
-    console.log(patient);
   })
   .catch(err => next(err));
 }); 
