@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const patientSchema = new Schema({
   patientId: Number,
+  healthInsuranceId: Number,
   firstName: {
     type: String,
     required: true
@@ -27,38 +28,71 @@ const patientSchema = new Schema({
   },
   diagnosis: String,
   allergies: String,
+  lastMeasurements: {
+    totalColesterol: Number,
+    ldl: Number,
+    hdl: Number,
+    triglycerides: Number,
+    urea: Number,
+    creatinine: Number,
+    potassium: Number,
+    sodium: Number,
+    basalBloodGlucose: Number,
+  },
   alertLevel: {
     type: String,
     enum: ['Low', 'Medium', 'High'],
   },
   treatments: [{
     type: Schema.Types.ObjectId,
-    ref: 'Treatment'
+    ref: 'Treatment',
   }],
-  bloodPressureData: [{
+  bloodPressureData: {
     isMeasured: Boolean,
-    date: Date,
-    value: [{
+    min: {
+      systolic: Number,
+      diastolic: Number
+  },
+    max: {
+      systolic: Number,
+      diastolic: Number
+  },
+    target: {
+      systolic: Number,
+      diastolic: Number
+  },
+    values: [{
             systolic: Number,
-            diastolic: Number
+            diastolic: Number,
+            date: Date,
+            comment: String
         }],
-    comment: String
-  }],
-  heartFrequencyData: [{
+  },
+  heartFrequencyData: {
     isMeasured: Boolean,
-    date: Date,
-    value: Number,
-    comment: String
-  }],
-  bloodSugarData: [{
+    min: Number,
+    max: Number,
+    target: Number,
+    values: [{
+      date: Date,
+      value: Number,
+      comment: String
+    }]
+  },
+  bloodSugarData: {
     isMeasured: Boolean,
-    date: Date,
-    value: Number,
-    comment: String
-  }],
+    min: Number,
+    max: Number,
+    target: Number,
+    values: [{
+      date: Date,
+      value: Number,
+      comment: String
+    }]
+  },
   assignedDoctor: {
     type: Schema.Types.ObjectId,
-    ref: "Doctor",
+    ref: 'Doctor',
     required: true
   },
   lastUpdate: Date

@@ -1,0 +1,94 @@
+
+
+<div class='patientHeader'>
+<div id='contactInfo'> 
+  <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Age: {{patientAge}}</span> <span>Patient ID: {{patient.patientId}}</span>
+ <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email: {{patient.contact.email}}</span>
+ </div>
+
+ <div style="display:none" id='hiddenId'>{{patient._id}}</div>
+
+<div id='patientValues'>
+  <div class='measurements'>
+  <h4>Last Measurements</h4>
+  <thead>
+    <tr>
+      <td>Cholesterol</td>
+      <td>LDL</td>
+      <td>HDL</td>
+      <td>Triglycerides</td>
+      <td>Urea</td>
+      <td>Creatine</td>
+      <td>Potassium</td>
+      <td>Sodium</td>
+      <td>Basal glycemia</td>
+    </tr>
+    <br>
+    <tr>
+      <td>{{patient.lastMeasurements.totalColesterol}}</td>
+      <td>{{patient.lastMeasurements.ldl}}</td>
+      <td>{{patient.lastMeasurements.hdl}}</td>
+      <td>{{patient.lastMeasurements.triglycerides}}</td>
+      <td>{{patient.lastMeasurements.urea}}</td>
+      <td>{{patient.lastMeasurements.creatinine}}</td>
+      <td>{{patient.lastMeasurements.potassium}}</td>
+      <td>{{patient.lastMeasurements.sodium}}</td>
+      <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
+    </tr>
+  </thead>
+  </div>
+  <div class='measurements'> 
+    <h4>Allergies:</h4>
+    <p>{{patient.allergies}}</p>
+  </div>
+
+  <div class='graphContainer'>
+    <div id='treatmentsContainer' class='treatment'>
+      <h2>Treatments</h2>
+{{!-- 
+  <div class="btn-group">
+  <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{patients.treatments.[0].name}}
+  </button>
+  <div class="dropdown-menu">
+    <p>Type of Drug:</p>
+    <div>
+      <h4>Dose</h4>
+      {{#if doseMeals.isSelected}}
+      Breakfast: {{doseMeals.breakfast}}
+      Lunch: {{doseMeals.lunch}}
+      Dinner: {{doseMeals.dinner}}
+      Night: {{doseMeals.night}}
+      {{else}}
+      {{doseTime.quantity}} pieces each {{doseTime.intervall}} {{doseTime.timeMeasure}}
+      {{/if}}
+      <p></p>
+    </div>
+    <div>
+      <h4>Duration</h4>
+      <p>From {{dateFormat startDate "d, MMM, YYYY"}} To {{dateFormat endDate "DD, MMM, YYYY"}}</p>
+    </div>
+    <div>
+      <h4>Recommendations</h4>
+      <p>{{recommendation}}</p>
+    </div>
+  </div>
+</div> --}}
+</div>
+
+
+    <div id='heartRateContainer' class='treatment'>
+      <h2>Blood Pressure and Heart Frequency</h2>
+      <canvas id="heartRateGraph"></canvas>
+    </div>
+
+    <div id='bloodSugarContainer' class='treatment'>
+      <h2>Blood Sugar</h2>
+      <canvas id="bloodSugarChart"></canvas>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script src='/javascripts/chart.js'></script>

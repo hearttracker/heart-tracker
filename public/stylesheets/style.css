@@ -5,6 +5,7 @@ body {
 a {
   color: #00B7FF; }
 
+
 .modal {
   display: none;
   /* Hidden by default */
@@ -47,5 +48,13 @@ a {
   color: black;
   text-decoration: none;
   cursor: pointer; }
+
+/*Dashboard Styling */
+.graphContainer {
+  display: flex; }
+
+.treatment {
+  width: 33%; }
+
 
 /*# sourceMappingURL=style.css.map */

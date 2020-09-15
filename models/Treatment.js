@@ -6,17 +6,19 @@ const treatmentSchema = new Schema({
       required: true
     },
     doseMeals: {
+      isSelected: Boolean,
       breakfast: Number,
       lunch: Number,
       dinner: Number,
       night: Number
     },
     doseTime: {
+      isSelected: Boolean,
       quantity: Number,
       interval: Number,
       timeMeasure: {
         type: String,
-        enum: ['days', 'hours', 'minutes']
+        enum: ['month', 'weeks', 'days', 'hours']
       },
     },
     startDate: Date,

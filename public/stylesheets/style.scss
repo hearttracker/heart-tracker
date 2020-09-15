@@ -7,6 +7,7 @@ a {
   color: #00B7FF;
 }
 
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -43,3 +44,13 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+/*Dashboard Styling */
+.graphContainer {
+  display: flex;
+}
+
+.treatment {
+  width: 33%
+}
+
