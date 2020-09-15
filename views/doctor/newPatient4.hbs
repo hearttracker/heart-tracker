@@ -1,0 +1,59 @@
+<h2>Nuevo Patient</h2>
+<h3>Configuration</h3>
+<div class="container">
+  <form action="/patient/{{_id}}">
+<div>
+
+<h4>Measures to be registered</h4>
+
+
+<input type="checkbox" name="bloodPressure" > blood pressure<br>
+  <div class="dropdown">
+    <label for="minBloodPressure">Min</label>
+<input type="text" name="minBloodPressure">
+<label for="maxBloodPressure">Max</label>
+<input type="text" nane="maxBloodPressure">
+<label for="targetObjetiveBloodPressure">Target Objective</label>
+<input type="text" name="targetObjetiveBloodPressure">
+  </div>
+
+<input type="checkbox"> heart rate <br>
+  <div class="dropdown">
+    <label for="minHeartRate">Min</label>
+<input type="text" name="minHeartRate">
+<label for="maxHeartRate">Max</label>
+<input type="text" nane="maxHeartRate">
+<label for="targetObjetiveHeartRate">Target Objective</label>
+<input type="text" name="targetObjetiveHeartRate">
+  </div>
+
+<input type="checkbox"> blood glucose
+  <div class="dropdown">
+    <label for="minBloodGlucose">Min</label>
+<input type="text" name="minBloodGlucose">
+<label for="maxBloodGlucose">Max</label>
+<input type="text" nane="maxBloodGlucose">
+<label for="targetObjetiveBloodGlucose">Target Objective</label>
+<input type="text" name="targetObjetiveBloodGlucose">
+  </div>
+</div>
+<div>
+  <h2>Alert Level</h2>
+  <select name="alert" id="alert">
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+</div>
+<div>
+  <h2>Notifications</h2>
+  <input type="radio" name="notification" value="never">Never
+  <input type="radio" name="notification" value="outOfRange">Data out of range
+  <input type="radio" name="notification" value="always">Always
+</div>
+</div>
+<a href="/doctor/newPatient3">Back</a>
+<button type="submit">Finish</button>
+</form>
+
+</div>

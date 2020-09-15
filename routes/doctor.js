@@ -14,6 +14,7 @@ const currentPatient = req.session.user.currentPatient
 
 router.post('/doctor/newPatient2', (req, res, next) => {
   req.session.currentPatient = req.body;
+  req.session.treatments = [];
   let currentPatient = req.session.currentPatient
 console.log("tag",req.session.currentPatient);
       res.render('doctor/newPatient2', {
@@ -38,14 +39,28 @@ router.post('/doctor/newPatient3', (req, res, next) => {
       console.log("current patient of second page: ",currentPatient);
 });
 
+router.post('/doctor/newTreatment', (req, res, next) => {
+  req.session.treatments.push(req.body)
+  console.log(req.body);
+const treatments = req.session.treatments
+      res.render('doctor/newPatient3', {
+        treatments
+      });
+});
 
-//livin la vida loca
+
 
 router.get("/doctor/newPatient3", (req,res,next) => {
   const currentPatient = req.session.currentPatient;
   res.render("doctor/newPatient3", {
     currentPatient
   })
+  
+})
+
+router.get("/doctor/newPatient4", (req,res,next) => {
+  
+  res.render("doctor/newPatient4")
   
 })
 
