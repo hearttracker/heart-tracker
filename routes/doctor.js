@@ -59,9 +59,66 @@ router.get("/doctor/newPatient3", (req,res,next) => {
 })
 
 router.get("/doctor/newPatient4", (req,res,next) => {
-  
   res.render("doctor/newPatient4")
   
+})
+
+router.post("/doctor/newPatient4", (req, res, next) => {
+  console.log("req.session.user: ",req.session.user);
+  let currentPatient = req.session.currentPatient
+  currentPatient = Object.assign(req.session.currentPatient, req.body)
+  console.log("This is currentPatient", currentPatient);
+  const {
+    firstName,
+    lastName,
+    secondLastName,
+    birthDate,
+    id ,
+    tis,
+    phoneNumber,
+    email,
+    totalColesterol,
+    ldl,
+    hdl,
+    triglycerides,
+    urea,
+    creatinine,
+    potassium,
+    sodium,
+    basalBloodGlucose,
+    allergies,
+    treatments
+  } = currentPatient
+
+  Patient.create({
+    firstName,
+    lastName,
+    secondLastName,
+    birthDate,
+    id,
+    tis,
+    contact: {
+      telephone: phoneNumber,
+      email,
+    },
+    totalColesterol,
+    ldl,
+    hdl,
+    triglycerides,
+    urea,
+    creatinine,
+    potassium,
+    sodium,
+    basalBloodGlucose,
+    allergies,
+    treatments,
+    assignedDoctor: req.session.user._id
+  }).then(patient => {
+    console.log("patient: ",patient);
+    res.redirect(`/patient/${patient._id}`)
+  }).catch(error => {
+    console.log(error);
+  })
 })
 
 

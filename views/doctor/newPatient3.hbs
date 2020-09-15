@@ -132,7 +132,7 @@
       <option value="7">7</option>
       <option value="8">8</option>
     </select>
-        <label for="doseIntervalsPerTime">Hours</label>
+        <label for="doseIntervalsPerTime">each</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">hours</option>
       <option value="2">days</option>
@@ -153,19 +153,32 @@
   <h2>Duration</h2>
     
   <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
-  <input type="radio" name="duration" id="duration">For 
+          
+          <input type="radio" name="duration" id="duration">
+    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
     <select name="doseDurationTime" id="doseDurationTime">
-      <option value="1">hours</option>
-      <option value="2">days</option>
-      <option value="3">weeks</option>
-      <option value="4">months</option>
-      <option value="5">years</option>
+      <option value="hours">hours</option>
+      <option value="days">days</option>
+      <option value="weeks">weeks</option>
+      <option value="months">months</option>
+      <option value="years">years</option>
     </select>
   </p>
 </div>
 <div class="recommendations">
   <textarea name="recommendation" rows="10" cols="30">
-
 </textarea>
 </div>
 
@@ -186,7 +199,10 @@
 {{!-- {{/with }} --}}
 
 
-
+<div>
+<a href="/doctor/newPatient2">Back</a>
+<a href="/doctor/newPatient4">Next</a> 
+</div>
 
 
 <script>
@@ -223,7 +239,3 @@ window.onclick = function(event) {
 </script>
 
 
-<div>
-<a href="/doctor/newPatient2">Back</a>
-<a href="/doctor/newPatient4">Next</a> 
-</div>
