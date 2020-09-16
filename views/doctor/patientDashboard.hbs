@@ -12,32 +12,32 @@
     <div class='measurements'>
       <h6>Last Measurements</h6>
       <table>
-      <thead>
-        <tr>
-          <th>Cholesterol</th>
-          <th>LDL</th>
-          <th>HDL</th>
-          <th>Triglycerides</th>
-          <th>Urea</th>
-          <th>Creatine</th>
-          <th>Potassium</th>
-          <th>Sodium</th>
-          <th>Basal glycemia</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Cholesterol</th>
+            <th>LDL</th>
+            <th>HDL</th>
+            <th>Triglycerides</th>
+            <th>Urea</th>
+            <th>Creatine</th>
+            <th>Potassium</th>
+            <th>Sodium</th>
+            <th>Basal glycemia</th>
+          </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>{{patient.lastMeasurements.totalColesterol}}</td>
-          <td>{{patient.lastMeasurements.ldl}}</td>
-          <td>{{patient.lastMeasurements.hdl}}</td>
-          <td>{{patient.lastMeasurements.triglycerides}}</td>
-          <td>{{patient.lastMeasurements.urea}}</td>
-          <td>{{patient.lastMeasurements.creatinine}}</td>
-          <td>{{patient.lastMeasurements.potassium}}</td>
-          <td>{{patient.lastMeasurements.sodium}}</td>
-          <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
-        </tr>
-      </tbody>
+          <tr>
+            <td>{{patient.lastMeasurements.totalColesterol}}</td>
+            <td>{{patient.lastMeasurements.ldl}}</td>
+            <td>{{patient.lastMeasurements.hdl}}</td>
+            <td>{{patient.lastMeasurements.triglycerides}}</td>
+            <td>{{patient.lastMeasurements.urea}}</td>
+            <td>{{patient.lastMeasurements.creatinine}}</td>
+            <td>{{patient.lastMeasurements.potassium}}</td>
+            <td>{{patient.lastMeasurements.sodium}}</td>
+            <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
     <div class='measurements'>
@@ -49,46 +49,94 @@
 
 <div class='graphContainer'>
   <div id='treatmentsContainer' class='treatment'>
-    <h2>Treatments</h2>
-    <div>{{patient.treatments.[0].name}}</div>
-
-    <p>Type of Drug:</p>
+    <h5>Treatments</h5>
+    {{#each patient.treatments}}
+    <button type="button" class="collapsible">{{name}}</button>
+    <div class="content">
+      <p>Type of Drug:</p>
     <div>
       <h4>Dose</h4>
-      {{#if patient.treatments.[0].doseMeals.isSelected}}
-      Breakfast: {{patient.treatments.[0].doseMeals.breakfast}}
-      Lunch: {{patient.treatments.[0].doseMeals.lunch}}
-      Dinner: {{patient.treatments.[0].doseMeals.dinner}}
-      Night: {{patient.treatments.[0].doseMeals.night}}
+      {{#if doseMeals.isSelected}}
+      Breakfast: {{doseMeals.breakfast}}
+      Lunch: {{doseMeals.lunch}}
+      Dinner: {{doseMeals.dinner}}
+      Night: {{doseMeals.night}}
       {{else}}
-      {{patient.treatments.[0].doseTime.quantity}} pieces each {{patient.treatments.[0].doseTime.intervall}} {{doseTime.timeMeasure}}
+      {{doseTime.quantity}} pieces each {{doseTime.intervall}}
+      {{doseTime.timeMeasure}}
       {{/if}}
       <p></p>
     </div>
     <div>
       <h4>Duration</h4>
-      <p>From {{dateFormat patient.treatments.[0].startDate "d, MMM, YYYY"}} To {{dateFormat patient.treatments.[0].endDate "DD, MMM, YYYY"}}</p>
+      <p>From {{dateFormat startDate "d, MMM, YYYY"}} To
+        {{dateFormat endDate "DD, MMM, YYYY"}}</p>
     </div>
     <div>
       <h4>Recommendations</h4>
-      <p>{{patient.treatments.[0].recommendation}}</p>
+      <p>{{recommendation}}</p>
     </div>
-
+    </div>
+  {{/each}}
+    
   </div>
 
 
-<div id='heartRateContainer' class='treatment'>
-  <h2>Blood Pressure and Heart Frequency</h2>
-  <canvas id="heartRateGraph"></canvas>
+  <div class='treatment' id='bloodPressureParent'>
+    {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
+    <div id='heartRateContainer' class='active'>
+    <div id='heartRateGraphContainer'>
+    <canvas id="heartRateGraph"></canvas>
+    </div>
+    <div id='heartRateTable'>
+    <table class='table'>
+      <thead>
+        <th>Date</th>
+        <th>Blood Pressure</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        {{#each patient.bloodPressureData.values}}
+        <tr>
+        <td>{{removeYear date}}</td>
+        <td>{{systolic}}/{{diastolic}}</td>
+        <td>{{comment}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+
+  <div class='treatment' id='bloodSugarParent'>
+    {{!-- <h5>Blood Sugar</h5> --}}
+    <div id='bloodSugarContainer'>
+    <div id='bloodSugarChartContainer'>
+         <canvas id="bloodSugarChart"></canvas>
+    </div>
+     <div id='bloodSugarTable'>
+    <table class='table'>
+      <thead>
+        <th>Date</th>
+        <th>Blood Pressure</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        {{#each patient.bloodSugarData.values}}
+        <tr>
+        <td>{{removeYear date}}</td>
+        <td>{{value}}</td>
+        <td>{{comment}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    </div>
+  </div>
+  </div>
 </div>
 
-<div id='bloodSugarContainer' class='treatment'>
-  <h2>Blood Sugar</h2>
-  <canvas id="bloodSugarChart"></canvas>
-</div>
-</div>
-
-</div>
-</div>
 
 <script src='/javascripts/chart.js'></script>
+<script src='/javascripts/collapsible.js'></script>
