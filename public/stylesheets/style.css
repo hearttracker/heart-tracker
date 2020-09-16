@@ -143,6 +143,11 @@ a {
 .treatment {
   width: 33%; }
 
+<<<<<<< HEAD
+#qrcode {
+  border: 1px solid black;
+  height: 250px; }
+=======
 #bloodSugarContainer {
   display: flex;
   flex-direction: column; }
@@ -211,5 +216,6 @@ a {
   text-decoration: none;
   cursor: pointer; }
 
+>>>>>>> 0f2533104659e5f56bf46ad70f1461fc4fa79863
 
 /*# sourceMappingURL=style.css.map */
