@@ -1,0 +1,36 @@
+
+<h1>Hay1</h1>
+
+<input id="text"  value="patientView/{{patient._id}}">
+<div id="qrcode"></div>
+<button>generate</button>
+
+<h1>pin code</h1>
+
+<a href="/patient/{{patient._id}}">dashboard</a>
+
+
+
+
+<script src="qrcode.min.js"></script>
+<script src="qrcode.js"></script>
+
+<script>
+let input = document.querySelector("input");
+let button = document.querySelector("button");
+let qrcode = new QRCode(document.querySelector("#qrcode"), {
+    width: 250,
+    height: 250,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+button.addEventListener("click", () => {
+  console.log("here")
+  let inputValue = input.value;
+qrcode.makeCode(input.value);
+
+})
+
+</script>

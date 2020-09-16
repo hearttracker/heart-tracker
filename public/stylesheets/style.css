@@ -85,4 +85,8 @@ a {
 .treatment {
   width: 33%; }
 
+#qrcode {
+  border: 1px solid black;
+  height: 250px; }
+
 /*# sourceMappingURL=style.css.map */
