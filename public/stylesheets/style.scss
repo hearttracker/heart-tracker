@@ -108,7 +108,7 @@ a {
   justify-content: flex-start;
   width: 90vw;
   height: 70vh;
-
+  position: relative;
 }
 
 .treatment {
@@ -123,17 +123,23 @@ a {
   width: 20%;
 }
 
-
-.treatment {
-  width: 33%
+#bloodPressureParent {
+  display: none;
+  flex-direction: row;
+  position: absolute;
+  width: 80%;
+  left: 260px;
+  justify-content: center;
+  align-items: center;
 }
 
-#heartRateContainer {
+
+#bloodPressureContainer {
   display: flex;
   height: 100%
 }
 
-#heartRateGraphContainer {
+#bloodPressureGraphContainer {
   width: 60%;
   position: relative;
   display: flex;
@@ -142,39 +148,51 @@ a {
   align-items: center;
 }
 
-#heartRateGraph {
+#bloodPressureGraph {
   height: 40%;
   width: 50%
 }
 
-#heartRateTable {
+#bloodPressureTable {
  overflow: scroll;
  height: 100%;
  width: 50%;
 }
 
-#heartRateInternal {
+
+#bloodSugarParent {
   display: flex;
-  flex-direction: column;
-  width: 60%;
+  flex-direction: row;
+  position: absolute;
+  width: 80%;
+  left: 260px;
+  justify-content: center;
+  align-items: center;
 }
 
 #bloodSugarContainer {
   display: flex;
-  flex-direction: column;
+  height: 100%
 }
 
 #bloodSugarGraphContainer {
+  width: 60%;
   position: relative;
   display: flex;
-  align-items: center
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+#bloodSugarChart {
+  height: 40%;
+  width: 50%
+}
 
 #bloodSugarTable {
   overflow: scroll;
   height: 100%;
-  width: 100%
+  width: 50%;
  }
 
  .addButton {
@@ -187,6 +205,14 @@ a {
   width: 20px;
   height: 20px;
  }
+
+ .nextButton {
+  height: 30vh;
+  width: 10vw;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+}
 
  /* The Modal (background) */
 .modal {
@@ -227,3 +253,4 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
