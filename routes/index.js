@@ -27,6 +27,15 @@ router.get('/patient/:id', isLoggedIn(), (req, res, next) => {
   Patient.findById(req.params.id)
   .populate('treatments')
   .then(patient => {
+    patient.bloodSugarData.values.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
+    patient.bloodPressureData.values.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
+    patient.heartFrequencyData.values.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date);
+    });
     res.render('doctor/patientDashboard', {
       patient: patient
     });
@@ -44,8 +53,9 @@ router.get('/api/patient/:id', isLoggedIn(), (req, res, next) => {
 }); 
 
 router.post('/patient/:id', (req, res, next) => {
+  if(req.body.hidden === 'bloodPressure') {
   const { systolic, diastolic, heartFrequency, comment, date } = req.body;
-
+  
   Patient.findByIdAndUpdate(req.params.id,
     {
       $push: {'bloodPressureData.values': 
@@ -66,25 +76,34 @@ router.post('/patient/:id', (req, res, next) => {
   })
     .populate('treatments')
     .then(patient => {
-    // patient.bloodPressureData.values.push({
-    //         systolic,
-    //         diastolic,
-    //         date,
-    //         comment
-    // });
-    // patient.heartFrequencyData.values.push({
-    //   date,
-    //   value: heartFrequency,
-    //   comment
-    // });
-      console.log(patient.bloodPressureData.values);
       res.render(`doctor/patientDashboard`, {
         patient: patient
       });
     }
   )
   .catch(err => next(err));
-})
+}
+else if(req.body.hidden === 'bloodSugar') {
+  const { bloodSugar, date, comment } = req.body;
+  Patient.findByIdAndUpdate(req.params.id,
+    {
+      $push: {'bloodSugarData.values': 
+      {
+        date,
+        value: bloodSugar,
+        comment
+      }
+    }
+  })
+  .then(patient => {
+    res.render(`doctor/patientDashboard`, {
+      patient: patient
+    });
+  }
+)
+.catch(err => next(err));
+}
+});
 
 
 module.exports = router;

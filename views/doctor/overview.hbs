@@ -1,42 +1,187 @@
-
 <h1>Patient Overview</h1>
 <a href="/logout">Log Out</a>
 <a href="/doctor/newPatient1">create new patient</a>
 
 <div class='searchbar'>
-  <input type="text" name="alert" placeholder="Alert"> <input type="name" name="name" placeholder="Name"> <input type="text" name="surname" placeholder="Surname"> <input type="number" name="age" placeholder="Age"> <input type="date" name="lastUpdate" placeholder="Last Update">
+  <input type="text" name="alert" placeholder="Alert"> <input type="name" name="name" placeholder="Name"> <input
+    type="text" name="surname" placeholder="Surname"> <input type="number" name="age" placeholder="Age"> <input
+    type="date" name="lastUpdate" placeholder="Last Update">
   <button type="submit">Search</button>
 </div>
 <div class="tablecontainer">
   <table class="table">
-  <thead>
-    <tr>
-      <th>Alert</th>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Birth Date</th>
-      <th>Last Update</th>
-    </tr>
-  </thead>
-  <br>
-  <tbody>
-    {{#each doctor.patients}}
-    <tr>
-      <td>{{alertLevel}}</td>
-      <td>
-        <a href="/patient/{{_id}}">
-        {{firstName}}</a>
-        </td>
-      <td>{{lastName}}</td>
-      <td>{{dateFormat birthDate "d, MMM, YYYY"}}</td>
-      <td>{{dateFormat lastUpdate "d, MMM, YYYY"}}</td>
-      <td><a href="/patient/{{_id}}/edit">Edit</a></td>
-    </tr>
-  
+    <thead>
+      <tr>
+        <th>Alert</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Birth Date</th>
+        <th>Last Update</th>
+      </tr>
+    </thead>
     <br>
-   
-    {{/each}}
-  </tbody>
-</table>
+    <tbody>
+      {{#each doctor.patients}}
+      <tr>
+        <td>{{alertLevel}}</td>
+        <td>
+          <a href="/patient/{{_id}}">
+            {{firstName}}</a>
+        </td>
+        <td>{{lastName}}</td>
+        <td>{{birthDate}}</td>
+        <td>{{lastUpdate}}</td>
+        <td><button id="editBtn">Edit</button>
+          <div style="display:none">{{_id}}</div>
+        </td>
+      </tr>
+
+      <br>
+
+      {{/each}}
+    </tbody>
+  </table>
 </div>
 
+<!-- The Modal -->
+<div id="editModal" class="modal">
+<div id="hiddenModal" style="display: none"></div>
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h4>Edit Patient</h4>
+
+    <form action="" method="POST">
+      <div>
+        <h5>Contact Info</h5>
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" value="{{firstName}}">
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" value="{{lastName}}">
+
+        <label for="secondLastName">Second Last Name:</label>
+        <input type="text" name="secondLastName" id="secondLastName" value="{{secondLastName}}">
+
+        <label for="birthDate">Date of birth:</label>
+        <input type="string" name="birthDate" id="birthDate" value="{{birthDate}}">
+      </div>
+
+      <div>
+        <label for="id">ID:</label>
+        <input type="number" name="id" id="id" value="{{id}}">
+
+        <label for="tis">TIS:</label>
+        <input type="number" name="tis" id="tis" value="{{tis}}">
+
+        <label for="phoneNumber">Phone:</label>
+        <input type="number" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="{{email}}">
+      </div>
+
+      <div>
+        <h5>Measurements</h5>
+        <label for="totalColesterol">Total Colesterol:</label>
+        <input type="text" name="totalColesterol" id="totalColesterol" value="{{totalColesterol}}">
+
+        <label for="ldl">LDL:</label>
+        <input type="text" name="ldl" id="ldl" value="{{ldl}}">
+
+        <label for="hdl">HDL:</label>
+        <input type="text" name="hdl" id="hdl" value="{{hdl}}">
+      </div>
+
+      <div>
+        <label for="triglycerides">Triglycerides:</label>
+        <input type="number" name="triglycerides" id="triglycerides" value="{{triglycerides}}">
+
+        <label for="urea">Urea:</label>
+        <input type="number" name="urea" id="urea" value="{{urea}}">
+
+        <label for="creatinine">Creatinine:</label>
+        <input type="number" name="creatinine" id="creatinine" value="{{creatinine}}">
+      </div>
+
+      <div>
+        <label for="potassium">Potassium:</label>
+        <input type="number" name="potassium" id="potassium" value="{{potassium}}">
+
+        <label for="sodium">Sodium:</label>
+        <input type="text" name="sodium" id="sodium" value="{{sodium}}">
+
+        <label for="basalBloodGlucose">Basal Blood Glucose:</label>
+        <input type="text" name="basalBloodGlucose" id="basalBloodGlucose" value="{{basalBloodGlucose}}">
+      </div>
+  
+
+  <div>
+    <label for="allergies">Allergies:</label>
+    <input type="text" name="allergies" id="allergies" value="{{allergies}}">
+  </div>
+
+  <div>
+    <h5>Treatments</h5>
+    <ul id='treatments'>
+    </ul>
+  </div>
+  <div>
+
+      <h4>Measures to be registered</h4>
+
+
+      <input type="checkbox" name="bloodPressureMeasured" value="true"> blood pressure<br>
+      <div class="dropdown">
+        <label for="minBloodPressure">Min</label>
+        <input type="text" name="minBloodPressure">
+        <label for="maxBloodPressure">Max</label>
+        <input type="text" name="maxBloodPressure">
+        <label for="targetObjectiveBloodPressure">Target Objective</label>
+        <input type="text" name="targetObjetiveBloodPressure">
+      </div>
+
+      <input type="checkbox" value="true" name="heartRateMeasured"> heart rate <br>
+      <div class="dropdown">
+        <label for="minHeartRate">Min</label>
+        <input type="number" name="minHeartRate">
+        <label for="maxHeartRate">Max</label>
+        <input type="number" name="maxHeartRate">
+        <label for="targetObjetiveHeartRate">Target Objective</label>
+        <input type="number" name="targetObjetiveHeartRate">
+      </div>
+
+      <input type="checkbox" value="true" name="bloodGlucoseMeasured"> blood glucose
+      <div class="dropdown">
+        <label for="minBloodGlucose">Min</label>
+        <input type="number" name="minBloodGlucose">
+        <label for="maxBloodGlucose">Max</label>
+        <input type="number" name="maxBloodGlucose">
+        <label for="targetObjetiveBloodGlucose">Target Objective</label>
+        <input type="number" name="targetObjetiveBloodGlucose">
+      </div>
+    </div>
+    <div>
+      <h2>Alert Level</h2>
+      <select name="alert" id="alert">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+    <div>
+      <h2>Notifications</h2>
+      <input type="radio" name="notification" value="never">Never
+      <input type="radio" name="notification" value="outOfRange">Data out of range
+      <input type="radio" name="notification" value="always">Always
+    </div>
+  </form>
+</div>
+</div>
+
+
+
+
+
+<script src='/javascripts/editPatient.js'></script>

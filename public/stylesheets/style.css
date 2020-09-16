@@ -113,6 +113,9 @@ a {
 #treatmentsContainer {
   width: 20%; }
 
+.treatment {
+  width: 33%; }
+
 #heartRateContainer {
   display: flex;
   height: 100%; }
@@ -138,10 +141,6 @@ a {
   display: flex;
   flex-direction: column;
   width: 60%; }
-
-
-.treatment {
-  width: 33%; }
 
 #bloodSugarContainer {
   display: flex;
@@ -210,6 +209,5 @@ a {
   color: #000;
   text-decoration: none;
   cursor: pointer; }
-
 
 /*# sourceMappingURL=style.css.map */

@@ -4,6 +4,7 @@
       ID: {{patient.patientId}}</span>
     <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email:
       {{patient.contact.email}}</span>
+      <span><a href="/logout">Logout</a></span>
   </div>
 
   <div style="display:none" id='hiddenId'>{{patient._id}}</div>
@@ -151,12 +152,13 @@
     <span class="close">&times;</span>
     <h5>Add new Blood Pressure and Heart Frequency Value</h5>
     <form action='/patient/{{patient._id}}' method='POST'>
+      <input type="hidden" name="hidden" value="bloodPressure">
       <label for="bloodPressure">Systolic/Diastolic:</label>
-      <input type="number" name="systolic" id="bloodPressure"> / <input type="number" name="diastolic" id="bloodPressure">
+      <input type="number" name="systolic" id="bloodPressure" required> / <input type="number" name="diastolic" id="bloodPressure" required>
       <label for="heartFrequency">Heart Frequency</label>
       <input type="number" name="heartFrequency" id="heartFrequency">
       <label for="date">Date</label>
-      <input type="string" name="date" id="date" placeholder="DD.MM.YYY">
+      <input type="string" name="date" id="date" placeholder="DD.MM.YYY" required>
       <label for="comment">Comment</label>
       <input type="text" name="comment" id="comment">
       <button type="submit">Save</button>
@@ -173,10 +175,11 @@
     <span class="close">&times;</span>
     <h5>Add new Blood Sugar Value</h5>
       <form action='/patient/{{patient._id}}' method='POST'>
+      <input type="hidden" name="hidden" value="bloodPressure">
       <label for="bloodSugar">Blood Sugar:</label>
-      <input type="number" name="bloodSugar">
+      <input type="number" name="bloodSugar" required>
       <label for="date">Date</label>
-      <input type="string" name="date" id="date" placeholder="DD.MM.YYY">
+      <input type="string" name="date" id="date" placeholder="DD.MM.YYY" required>
       <label for="comment">Comment</label>
       <input type="text" name="comment" id="comment">
       <button type="submit">Save</button>
