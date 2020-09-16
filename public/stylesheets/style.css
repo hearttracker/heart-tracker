@@ -49,8 +49,38 @@ a {
   cursor: pointer; }
 
 /*Dashboard Styling */
+#contactInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+  height: 5vh;
+  background-color: #a59898; }
+
+#contactInfo span {
+  width: 16%; }
+
+#patientValues {
+  display: flex;
+  justify-content: align-items;
+  width: 90vw;
+  background-color: lightgray; }
+
+#patientValues table {
+  width: 100%; }
+
+.measurements {
+  margin: 10px; }
+
 .graphContainer {
-  display: flex; }
+  display: flex;
+  justify-content: space-between;
+  width: 90vw; }
+
+.treatmentsContainer {
+  width: 20%; }
+
+.heartRateContainer {
+  width: 60%; }
 
 .treatment {
   width: 33%; }

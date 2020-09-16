@@ -14,11 +14,12 @@
   </tr>
 {{#each treatments}}
   <tr>
-    <td>{{drugName}}</td>
+    <td>{{name}}</td>
+    {{!-- {{#if dose}} --}}
     <td>{{dose}}</td>
     <td>{{duration}}</td>
-    <td>{{startingDate}}</td>
-    <td>02.10.2020</td>
+    <td>{{startDate.[1]}}</td>
+    <td>{{endDate}}</td>
   </tr>
 {{/each}}
 
@@ -37,20 +38,20 @@
     <div>
   
     <h4>Drug</h4>
-      <label for="drugName">Drug name:</label>
-  <input type="text" name="drugName" id="drugName" value="{{drugName}}">
+      <label for="name">Drug name:</label>
+  <input type="text" name="name" id="name" value="{{name}}">
   </div>
   <div>
       <h4>Dose</h4>
 
-  <input type="radio" name="dose" id="perMeal" value="perMeal">Per meal<br>
-  <input type="radio" name="dose" id="perTime" value="perTime">Per time
+  <input type="radio" name="dose" id="perMeal" value="true">Per meal<br>
+  <input type="radio" name="dose" id="perTime" value="true">Per time
 </div>
 <div class="dose-per-meal">
   <h2>Dose per Meal</h2>
   <p>
-    <label for="doseIntervalsPerMeal">Breakfast</label>
-    <select name="doseIntervalsPerMeal" id="doseIntervalsPerMeal" >
+    <label for="breakfast">Breakfast</label>
+    <select name="breakfast" id="breakfast" >
       <option value="">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -63,8 +64,8 @@
     </select>
   </p>
     <p>
-    <label for="doseIntervalsPerMeal">Lunch</label>
-    <select name="doseIntervalsPerMeal" id="doseIntervalsPerMeal" >
+    <label for="lunch">Lunch</label>
+    <select name="lunch" id="lunch" >
       <option value="">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -77,8 +78,8 @@
     </select>
   </p>
     <p>
-    <label for="doseIntervalsPerMeal">Dinner</label>
-    <select name="doseIntervalsPerMeal" id="doseIntervalsPerMeal" >
+    <label for="dinner">Dinner</label>
+    <select name="dinner" id="dinner" >
       <option value="">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -91,8 +92,8 @@
     </select>
   </p>
     <p>
-    <label for="doseIntervalsPerMeal">Night</label>
-    <select name="doseIntervalsPerMeal" id="doseIntervalsPerMeal" >
+    <label for="night">Night</label>
+    <select name="night" id="night" >
       <option value="">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -136,17 +137,17 @@
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">hours</option>
       <option value="2">days</option>
-      <option value="3">weeks</option>
-      <option value="4">months</option>
-      <option value="5">years</option>
+      <option value="3">week</option>
+      <option value="4">month</option>
     </select>
   </p>
 </div>
 <div>
 
-  <input type="radio" name="startingDate" id="startingDate">Today<br>
-  <input type="radio" name="startingDate" id="startingDate">Choose starting date
-  <input type="date" name="startingDate" id="startingDate" >
+  <input type="radio" name="startDate" id="startDate" value="true">Today<br>
+  <input type="radio" name="startDate" id="startDate">Choose start date
+  <input type="date" name="startDate" id="startDate" >Choose end date
+  <input type="date" name="endDate" id="endDate" >
 
 </div>
 <div>
@@ -173,7 +174,6 @@
       <option value="days">days</option>
       <option value="weeks">weeks</option>
       <option value="months">months</option>
-      <option value="years">years</option>
     </select>
   </p>
 </div>

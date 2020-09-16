@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Patient = require('../models/Patient');
 const Doctor = require('../models/Doctor');
+const Treatment = require("../models/Treatment")
 
 
 router.get('/doctor/newPatient1', (req, res) => {
-const currentPatient = req.session.user.currentPatient
+const currentPatient = req.session.currentPatient
     res.render('doctor/newPatient1', {
       currentPatient
     })
@@ -41,11 +42,11 @@ router.post('/doctor/newPatient3', (req, res, next) => {
 
 router.post('/doctor/newTreatment', (req, res, next) => {
   req.session.treatments.push(req.body)
-  console.log(req.body);
-const treatments = req.session.treatments
+  const treatments = req.session.treatments
+  console.log(treatments);
       res.render('doctor/newPatient3', {
-        treatments
-      });
+      treatments
+    });
 });
 
 
@@ -59,15 +60,18 @@ router.get("/doctor/newPatient3", (req,res,next) => {
 })
 
 router.get("/doctor/newPatient4", (req,res,next) => {
+  console.log("info so far: ", req.session.currentPatient);
   res.render("doctor/newPatient4")
   
 })
 
-router.post("/doctor/newPatient4", (req, res, next) => {
-  console.log("req.session.user: ",req.session.user);
+
+
+router.post("/doctor/newPatient4", async (req, res, next) => {
+  const treatments = req.session.treatments
   let currentPatient = req.session.currentPatient
-  currentPatient = Object.assign(req.session.currentPatient, req.body)
-  console.log("This is currentPatient", currentPatient);
+  console.log("current patient info in the end", currentPatient);
+  currentPatient = Object.assign(req.session.currentPatient, req.body);
   const {
     firstName,
     lastName,
@@ -86,22 +90,39 @@ router.post("/doctor/newPatient4", (req, res, next) => {
     potassium,
     sodium,
     basalBloodGlucose,
-    allergies,
-    treatments
+    allergies, 
+    alert,
+    bloodPressureMeasured,
+    minBloodPressure,
+    targetObjetiveBloodPressure,
+    minHeartRate,
+    targetObjetiveHeartRate,
+    minBloodGlucose,
+    targetObjetiveBloodGlucose,
+    maxBloodPressure,
+    maxHeartRate,
+    maxBloodGlucose,
+    heartRateMeasured,
+    bloodGlucoseMeasured
   } = currentPatient
+  const minBloodPressureData = minBloodPressure.split("/");
+  const maxBloodPressureData = maxBloodPressure.split("/");
+  const targetBloodPressureData = targetObjetiveBloodPressure.split("/");
 
-  Patient.create({
+try {
+  const addedTreatments = await Treatment.insertMany(treatments)
+  const patient = await Patient.create({
     firstName,
     lastName,
     secondLastName,
     birthDate,
-    id,
-    tis,
+    patientId: id,
+    healthInsuranceId: tis,
     contact: {
       telephone: phoneNumber,
       email,
     },
-    totalColesterol,
+    lastMeasurements: {totalColesterol,
     ldl,
     hdl,
     triglycerides,
@@ -109,16 +130,46 @@ router.post("/doctor/newPatient4", (req, res, next) => {
     creatinine,
     potassium,
     sodium,
-    basalBloodGlucose,
+    basalBloodGlucose
+    },
+    bloodPressureData: {
+      isMeasured: bloodPressureMeasured,
+    min: {
+      systolic: Number(minBloodPressureData[0]),
+      diastolic: Number(minBloodPressureData[1])
+    },
+    max: {
+      systolic: Number(maxBloodPressureData[0]),
+      diastolic: Number(maxBloodPressureData[1])
+    },
+    target: {
+      systolic: Number(targetBloodPressureData[0]),
+      diastolic: Number(targetBloodPressureData[1])
+    },
+  },
+  heartFrequencyData:{
+    isMeasured: heartRateMeasured,
+    min: minHeartRate,
+    max: maxHeartRate,
+    target: targetObjetiveHeartRate
+  },
+  bloodSugarData:{
+    isMeasured: bloodGlucoseMeasured,
+    max: maxBloodGlucose,
+    min: minBloodGlucose,
+  target:targetObjetiveBloodGlucose
+  },
     allergies,
-    treatments,
+    alertLevel: alert,
+    treatments: addedTreatments._id,
     assignedDoctor: req.session.user._id
-  }).then(patient => {
-    console.log("patient: ",patient);
-    res.redirect(`/patient/${patient._id}`)
-  }).catch(error => {
-    console.log(error);
   })
+    res.redirect(`/patient/${patient._id}`)
+  
+} catch (error) {
+  next(error)
+}
+
 })
 
 

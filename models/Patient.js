@@ -12,7 +12,7 @@ const patientSchema = new Schema({
     required: true
   },
   birthDate: {
-    type: Date,
+    type: String,
     required: true
   },
   contact: {
@@ -64,7 +64,7 @@ const patientSchema = new Schema({
     values: [{
             systolic: Number,
             diastolic: Number,
-            date: Date,
+            date: String,
             comment: String
         }],
   },
@@ -74,7 +74,7 @@ const patientSchema = new Schema({
     max: Number,
     target: Number,
     values: [{
-      date: Date,
+      date: String,
       value: Number,
       comment: String
     }]
@@ -85,7 +85,7 @@ const patientSchema = new Schema({
     max: Number,
     target: Number,
     values: [{
-      date: Date,
+      date: String,
       value: Number,
       comment: String
     }]
@@ -95,7 +95,7 @@ const patientSchema = new Schema({
     ref: 'Doctor',
     required: true
   },
-  lastUpdate: Date
+  lastUpdate: String
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

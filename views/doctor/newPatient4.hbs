@@ -7,42 +7,42 @@
 <h4>Measures to be registered</h4>
 
 
-<input type="checkbox" name="bloodPressure" > blood pressure<br>
+<input type="checkbox" name="bloodPressureMeasured" value="true"> blood pressure<br>
   <div class="dropdown">
     <label for="minBloodPressure">Min</label>
 <input type="text" name="minBloodPressure">
 <label for="maxBloodPressure">Max</label>
-<input type="text" nane="maxBloodPressure">
+<input type="text" name="maxBloodPressure">
 <label for="targetObjetiveBloodPressure">Target Objective</label>
 <input type="text" name="targetObjetiveBloodPressure">
   </div>
 
-<input type="checkbox"> heart rate <br>
+<input type="checkbox" value="true" name="heartRateMeasured"> heart rate <br>
   <div class="dropdown">
     <label for="minHeartRate">Min</label>
-<input type="text" name="minHeartRate">
+<input type="number" name="minHeartRate">
 <label for="maxHeartRate">Max</label>
-<input type="text" nane="maxHeartRate">
+<input type="number" name="maxHeartRate">
 <label for="targetObjetiveHeartRate">Target Objective</label>
-<input type="text" name="targetObjetiveHeartRate">
+<input type="number" name="targetObjetiveHeartRate">
   </div>
 
-<input type="checkbox"> blood glucose
+<input type="checkbox" value="true" name="bloodGlucoseMeasured"> blood glucose
   <div class="dropdown">
     <label for="minBloodGlucose">Min</label>
-<input type="text" name="minBloodGlucose">
+<input type="number" name="minBloodGlucose">
 <label for="maxBloodGlucose">Max</label>
-<input type="text" nane="maxBloodGlucose">
+<input type="number" name="maxBloodGlucose">
 <label for="targetObjetiveBloodGlucose">Target Objective</label>
-<input type="text" name="targetObjetiveBloodGlucose">
+<input type="number" name="targetObjetiveBloodGlucose">
   </div>
 </div>
 <div>
   <h2>Alert Level</h2>
   <select name="alert" id="alert">
-    <option value="low">Low</option>
-    <option value="medium">Medium</option>
-    <option value="high">High</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
   </select>
 </div>
 <div>
