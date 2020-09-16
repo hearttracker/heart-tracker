@@ -87,7 +87,9 @@
     <div id='heartRateContainer' class='active'>
     <div id='heartRateGraphContainer'>
     <canvas id="heartRateGraph"></canvas>
+    <button id="bpButton">+</button>
     </div>
+    
     <div id='heartRateTable'>
     <table class='table'>
       <thead>
@@ -105,6 +107,7 @@
         {{/each}}
       </tbody>
     </table>
+
     </div>
     </div>
   </div>
@@ -115,6 +118,7 @@
     <div id='bloodSugarChartContainer'>
          <canvas id="bloodSugarChart"></canvas>
     </div>
+     <button id="bsButton">+</button>
      <div id='bloodSugarTable'>
     <table class='table'>
       <thead>
@@ -132,11 +136,55 @@
         {{/each}}
       </tbody>
     </table>
+     
     </div>
   </div>
   </div>
 </div>
 
 
+<!-- The BP Modal -->
+<div id="bpModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h5>Add new Blood Pressure and Heart Frequency Value</h5>
+    <form action='/patient/{{patient._id}}' method='POST'>
+      <label for="bloodPressure">Systolic/Diastolic:</label>
+      <input type="number" name="systolic" id="bloodPressure"> / <input type="number" name="diastolic" id="bloodPressure">
+      <label for="heartFrequency">Heart Frequency</label>
+      <input type="number" name="heartFrequency" id="heartFrequency">
+      <label for="date">Date</label>
+      <input type="string" name="date" id="date" placeholder="DD.MM.YYY">
+      <label for="comment">Comment</label>
+      <input type="text" name="comment" id="comment">
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- The BS Modal -->
+<div id="bsModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h5>Add new Blood Sugar Value</h5>
+      <form action='/patient/{{patient._id}}' method='POST'>
+      <label for="bloodSugar">Blood Sugar:</label>
+      <input type="number" name="bloodSugar">
+      <label for="date">Date</label>
+      <input type="string" name="date" id="date" placeholder="DD.MM.YYY">
+      <label for="comment">Comment</label>
+      <input type="text" name="comment" id="comment">
+      <button type="submit">Save</button>
+    </form>
+  </div>
+
+</div>
+
 <script src='/javascripts/chart.js'></script>
 <script src='/javascripts/collapsible.js'></script>
+<script src='/javascripts/addValue.js'></script>

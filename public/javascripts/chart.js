@@ -25,6 +25,7 @@ const bloodSugarChart = (data) => {
 };
 
 const bloodPressureChart = (bloodPressureData, heartFrequencyData) => {
+  console.log({bloodPressureData});
   const dates = bloodPressureData.slice(0,10).map(value => value.date);
   console.log({ dates })
   const systolic = bloodPressureData.slice(0,10).map(value => value.systolic);
@@ -43,15 +44,16 @@ const bloodPressureChart = (bloodPressureData, heartFrequencyData) => {
           label: 'Systolic',
           borderColor: 'rgb(247, 24, 2)',
           data: systolic,
-          fill: false,
-          yAxisId: 'first-y-axis'
+          fill: 1,
+          yAxisId: 'first-y-axis',
+          backgroundColor: "rgba(184,151,151, 0.52)"
         },
         {
           label: 'Diastolic',
           borderColor: 'rgb(29, 2, 237)',
           data: diastolic,
           fill: false,
-          yAxisId: 'first-y-axis'
+          yAxisId: 'first-y-axis',
         },
         {
           label: 'Heart Frequency',
@@ -108,7 +110,7 @@ fetch(`http://localhost:3000/api/patient/${patientId}`)
   // if(data.bloodPressureData.isMeasured && data.heartFrequencyData.isMeasured) {
     bloodPressureChart(data.bloodPressureData.values, data.heartFrequencyData.values)
   // };
-})
+});
 
 
 
@@ -116,7 +118,7 @@ const bloodPressure = document.getElementById('heartRateContainer');
 const bloodSugar = document.getElementById('bloodSugarContainer');
 
 bloodPressure.addEventListener("click", function() {
-  // if(!bloodPressure.classList.contains('active')) {
+  if(!bloodPressure.classList.contains('active')) {
   bloodPressure.classList.toggle('active');
   bloodSugar.classList.toggle('active');
 
@@ -130,26 +132,27 @@ bloodPressure.addEventListener("click", function() {
   bloodSugar.style.width = '20vw';
   bloodSugar.style.flexDirection = 'column';
 
-  console.log(bloodSugarParent);
-// }
+
+}
 });
 
 bloodSugar.addEventListener("click", function() {
   console.log('clicked');
-  // if(!bloodSugar.classList.contains('active')) {
+  if(!bloodSugar.classList.contains('active')) {
   bloodSugar.classList.toggle('active');
   bloodPressure.classList.toggle('active');
+
   let bloodSugarParent = bloodSugar.parentElement;
   bloodSugarParent.style.width = '60vw';
   bloodSugar.style.width = '60vw';
   bloodSugar.style.flexDirection = 'row';
-  console.log(bloodSugarParent);
+
 
   let bloodPressureParent = bloodPressure.parentElement;
   bloodPressureParent.style.width = '20vw';
   bloodPressure.style.width = '20vw';
   bloodPressure.style.flexDirection = 'column';
 
-  console.log(bloodPressureParent);
-// }
+
+}
 });
