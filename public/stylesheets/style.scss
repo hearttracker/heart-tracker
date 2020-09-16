@@ -1,5 +1,7 @@
+body, html {
+  margin: 0;
+}
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -34,21 +36,149 @@ a {
   margin: 10px;
 }
 
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: scroll;
+  background-color: #f1f1f1;
+  width: 100%
+}
+
+
 .graphContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 90vw;
-}
+  height: 70vh;
 
-.treatmentsContainer {
-  width: 20%
-}
-
-.heartRateContainer {
-  width: 60%
 }
 
 .treatment {
   border: 1px solid black;
+  height: 100%;
+  margin: 10px;
+  padding: 10px;
+  overflow: scroll;
 }
 
+#treatmentsContainer {
+  width: 20%;
+}
+
+#heartRateContainer {
+  display: flex;
+  height: 100%
+}
+
+#heartRateGraphContainer {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#heartRateGraph {
+  height: 40%;
+  width: 50%
+}
+
+#heartRateTable {
+ overflow: scroll;
+ height: 100%;
+ width: 50%;
+}
+
+#heartRateInternal {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+#bloodSugarContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#bloodSugarGraphContainer {
+  position: relative;
+  display: flex;
+  align-items: center
+}
+
+
+#bloodSugarTable {
+  overflow: scroll;
+  height: 100%;
+  width: 100%
+ }
+
+ .addButton {
+   position: relative;
+   background-color: grey;
+   color: white;
+   text-align: center;
+  text-decoration: none;
+  border-radius: 100px;
+  width: 20px;
+  height: 20px;
+ }
+
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

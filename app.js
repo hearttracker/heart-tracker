@@ -25,6 +25,9 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 const app = express();
 
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+hbs.registerHelper("removeYear", function(dateStr) {
+  return dateStr.substring(0, dateStr.length - 4);
+})
 
 // Middleware Setup
 app.use(logger('dev'));
