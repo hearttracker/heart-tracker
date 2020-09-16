@@ -43,5 +43,48 @@ router.get('/api/patient/:id', isLoggedIn(), (req, res, next) => {
   .catch(err => next(err));
 }); 
 
+router.post('/patient/:id', (req, res, next) => {
+  const { systolic, diastolic, heartFrequency, comment, date } = req.body;
+
+  Patient.findByIdAndUpdate(req.params.id,
+    {
+      $push: {'bloodPressureData.values': 
+        {
+        systolic,
+        diastolic,
+        date,
+        comment
+        }
+      ,
+      'heartFrequencyData.values': 
+        {
+          date,
+          value: heartFrequency,
+          comment
+        }
+    }
+  })
+    .populate('treatments')
+    .then(patient => {
+    // patient.bloodPressureData.values.push({
+    //         systolic,
+    //         diastolic,
+    //         date,
+    //         comment
+    // });
+    // patient.heartFrequencyData.values.push({
+    //   date,
+    //   value: heartFrequency,
+    //   comment
+    // });
+      console.log(patient.bloodPressureData.values);
+      res.render(`doctor/patientDashboard`, {
+        patient: patient
+      });
+    }
+  )
+  .catch(err => next(err));
+})
+
 
 module.exports = router;
