@@ -113,7 +113,7 @@ router.post("/doctor/newPatient4", async (req, res, next) => {
   const targetBloodPressureData = targetObjetiveBloodPressure.split("/");
 
 try {
-  const addedTreatments = await Treatment.insertMany(treatments)
+  const addedTreatments = await Treatment.insertMany(treatments);
   const patient = await Patient.create({
     firstName,
     lastName,
@@ -167,7 +167,8 @@ try {
     alertLevel: alert,
     treatments: addedTreatments._id,
     assignedDoctor: req.session.user._id
-  })
+  });
+  const doctor = await Doctor.findByIdAndUpdate(patient.assignedDoctor, {$push: {patients: patient._id}});
   res.redirect(`/doctor/qrCode/${patient._id}`)
     // res.redirect(`/patient/${patient._id}`)
   
