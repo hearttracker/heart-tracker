@@ -4,16 +4,16 @@
   <form action="/doctor/newPatient2" method="POST">
   <div>
   <label for="firstName">First Name:</label>
-  <input type="text" name="firstName" id="firstName" value="{{currentPatient.firstName}}">
+  <input type="text" name="firstName" id="firstName" value="{{currentPatient.firstName}}" required>
 
     <label for="lastName">Last Name:</label>
-  <input type="text" name="lastName" id="lastName" value="{{currentPatient.lastName}}">
+  <input type="text" name="lastName" id="lastName" value="{{currentPatient.lastName}}" required>
 
     <label for="secondLastName">Second Last Name:</label>
   <input type="text" name="secondLastName" id="secondLastName" value="{{currentPatient.secondLastName}}">
 
     <label for="birthDate">Date of birth:</label>
-  <input type="date" name="birthDate" id="birthDate" value="{{currentPatient.birthDate}}">
+  <input type="string" name="birthDate" id="birthDate" placeholder="DD.MM.YYYY" value="{{birthDate}}" required>
 </div>
 <div>
     <label for="id">ID:</label>
@@ -26,7 +26,7 @@
   <input type="number" name="phoneNumber" id="phoneNumber" value="{{currentPatient.phoneNumber}}">
 
     <label for="email">Email:</label>
-  <input type="text" name="email" id="email" value="{{currentPatient.email}}">
+  <input type="text" name="email" id="email" value="{{currentPatient.email}}" required>
   </div>
 </div>
 <button type="submit">Next</button>

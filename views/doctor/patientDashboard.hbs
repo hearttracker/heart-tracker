@@ -85,7 +85,7 @@
     
   </div>
 
-
+  {{!-- <div class='treatment' id='bpBsHeader'></div> --}}
   <div class='treatment' id='bloodPressureParent'>
     {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
     <div id='bloodPressureContainer'>
@@ -183,7 +183,7 @@
     <span class="close">&times;</span>
     <h5>Add new Blood Sugar Value</h5>
       <form action='/patient/{{patient._id}}' method='POST'>
-      <input type="hidden" name="hidden" value="bloodPressure">
+      <input type="hidden" name="hidden" value="bloodSugar">
       <label for="bloodSugar">Blood Sugar:</label>
       <input type="number" name="bloodSugar" required>
       <label for="date">Date</label>

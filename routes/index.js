@@ -78,6 +78,7 @@ router.post('/patient/:id', (req, res, next) => {
     .then(patient => {
       res.render(`doctor/patientDashboard`, {
         patient: patient
+        
       });
     }
   )

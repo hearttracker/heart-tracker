@@ -5,7 +5,7 @@
 <div class='searchbar'>
   <input type="text" name="alert" placeholder="Alert"> <input type="name" name="name" placeholder="Name"> <input
     type="text" name="surname" placeholder="Surname"> <input type="number" name="age" placeholder="Age"> <input
-    type="date" name="lastUpdate" placeholder="Last Update">
+    type="string" name="lastUpdate" placeholder="Last Update (DD.MM.YYYY)">
   <button type="submit">Search</button>
 </div>
 <div class="tablecontainer">
@@ -122,6 +122,11 @@
     <input type="text" name="allergies" id="allergies" value="{{allergies}}">
   </div>
 
+    <div>
+    <label for="diagnosis">Diagnosis:</label>
+    <input type="text" name="diagnosis" id="diagnosis" value="{{diagnosis}}">
+  </div>
+
   <div>
     <h5>Treatments</h5>
     <ul id='treatments'>
@@ -135,31 +140,31 @@
       <input type="checkbox" name="bloodPressureMeasured" value="true"> blood pressure<br>
       <div class="dropdown">
         <label for="minBloodPressure">Min</label>
-        <input type="text" name="minBloodPressure">
+        <input type="text" name="minBloodPressure" id="minBloodPressure">
         <label for="maxBloodPressure">Max</label>
-        <input type="text" name="maxBloodPressure">
+        <input type="text" name="maxBloodPressure" id="maxBloodPressure">
         <label for="targetObjectiveBloodPressure">Target Objective</label>
-        <input type="text" name="targetObjetiveBloodPressure">
+        <input type="text" name="targetObjetiveBloodPressure" id="targetObjetiveBloodPressure">
       </div>
 
       <input type="checkbox" value="true" name="heartRateMeasured"> heart rate <br>
       <div class="dropdown">
         <label for="minHeartRate">Min</label>
-        <input type="number" name="minHeartRate">
+        <input type="number" name="minHeartRate" id="minHeartRate">
         <label for="maxHeartRate">Max</label>
-        <input type="number" name="maxHeartRate">
+        <input type="number" name="maxHeartRate" id="maxHeartRate">
         <label for="targetObjetiveHeartRate">Target Objective</label>
-        <input type="number" name="targetObjetiveHeartRate">
+        <input type="number" name="targetObjetiveHeartRate" id="targetObjetiveHeartRate">
       </div>
 
       <input type="checkbox" value="true" name="bloodGlucoseMeasured"> blood glucose
       <div class="dropdown">
         <label for="minBloodGlucose">Min</label>
-        <input type="number" name="minBloodGlucose">
+        <input type="number" name="minBloodGlucose" id="minBloodGlucose">
         <label for="maxBloodGlucose">Max</label>
-        <input type="number" name="maxBloodGlucose">
+        <input type="number" name="maxBloodGlucose" id="maxBloodGlucose">
         <label for="targetObjetiveBloodGlucose">Target Objective</label>
-        <input type="number" name="targetObjetiveBloodGlucose">
+        <input type="number" name="targetObjetiveBloodGlucose" id="targetObjetiveBloodGlucose">
       </div>
     </div>
     <div>

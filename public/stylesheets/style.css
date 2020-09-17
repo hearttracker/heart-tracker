@@ -190,6 +190,7 @@ a {
   writing-mode: vertical-rl;
   text-orientation: mixed; }
 
+
 /* The Modal (background) */
 .modal {
   display: none;
@@ -233,6 +234,7 @@ a {
   color: #000;
   text-decoration: none;
   cursor: pointer; }
+
 
 #qrcode {
   border: 1px solid black;
