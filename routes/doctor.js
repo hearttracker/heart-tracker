@@ -169,6 +169,7 @@ try {
     assignedDoctor: req.session.user._id
   });
   const doctor = await Doctor.findByIdAndUpdate(patient.assignedDoctor, {$push: {patients: patient._id}});
+  console.log(doctor.patients);
   res.redirect(`/doctor/qrCode/${patient._id}`)
     // res.redirect(`/patient/${patient._id}`)
   
