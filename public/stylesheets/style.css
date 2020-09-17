@@ -165,11 +165,6 @@ a {
   justify-content: center;
   align-items: center; }
 
-
-#qrcode {
-  border: 1px solid black;
-  height: 250px; }
-
 #bloodSugarContainer {
   display: flex;
   height: 100%; }
@@ -251,7 +246,9 @@ a {
   text-decoration: none;
   cursor: pointer; }
 
- 0f2533104659e5f56bf46ad70f1461fc4fa79863
+#qrcode {
+  border: 1px solid black;
+  height: 250px; }
 
 
 /*# sourceMappingURL=style.css.map */
