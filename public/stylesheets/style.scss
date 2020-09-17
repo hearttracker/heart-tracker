@@ -3,10 +3,32 @@ body, html {
 }
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
   color: #00B7FF;
+}
+
+.logoHeader {
+  width: 100vw;
+  height: 5vh;
+  background-color: darkblue;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center
+}
+
+.logoHeader a {
+  color: white;
+  text-decoration: none;
+  padding-right: 10px;
 }
 
 
@@ -18,7 +40,7 @@ a {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  overflow: scroll; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -30,6 +52,9 @@ a {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  display: flex;
+  flex-direction: column;
+  overflow: scroll
 }
 
 /* The Close Button */
@@ -46,6 +71,42 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+/*overview styling */
+#overviewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#addPatientContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#addPatient {
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  margin-top: 50px;
+  margin-right: 50px;
+  padding: 5px;
+}
+
+#searchField {
+  width: 60px;
+}
+
+#overviewTable {
+  width: 90vw;
+  border: 1px solid black
+}
+
+#overviewTable th, td {
+  padding: 10px;
+}
+
 
 /*Dashboard Styling */
 #contactInfo {
@@ -81,7 +142,7 @@ a {
   color: #444;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   text-align: left;
   outline: none;
@@ -105,23 +166,37 @@ a {
 
 .graphContainer {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   width: 90vw;
   height: 70vh;
   position: relative;
 }
 
 .treatment {
-  border: 1px solid black;
-  height: 100%;
-  margin: 10px;
-  padding: 10px;
   overflow: scroll;
 }
 
 #treatmentsContainer {
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
 }
+
+
+#bpBsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+#bpBsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 
 #bloodPressureParent {
   display: none;
@@ -129,6 +204,7 @@ a {
   position: absolute;
   width: 80%;
   left: 260px;
+  top: 50px;
   justify-content: center;
   align-items: center;
 }
@@ -136,7 +212,8 @@ a {
 
 #bloodPressureContainer {
   display: flex;
-  height: 100%
+  height: 100%;
+  width: 100%
 }
 
 
@@ -167,13 +244,15 @@ a {
   position: absolute;
   width: 80%;
   left: 260px;
+  top: 50px;
   justify-content: center;
   align-items: center;
 }
 
 #bloodSugarContainer {
   display: flex;
-  height: 100%
+  height: 100%;
+  width: 100%
 }
 
 #bloodSugarGraphContainer {
@@ -208,52 +287,52 @@ a {
  }
 
  .nextButton {
-  height: 30vh;
-  width: 10vw;
+  height: 5vh;
+  width: 50%;
   writing-mode: vertical-rl;
   text-orientation: mixed;
 
 }
 
- /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+//  /* The Modal (background) */
+// .modal {
+//   display: none; /* Hidden by default */
+//   position: fixed; /* Stay in place */
+//   z-index: 1; /* Sit on top */
+//   padding-top: 100px; /* Location of the box */
+//   left: 0;
+//   top: 0;
+//   width: 100%; /* Full width */
+//   height: 100%; /* Full height */
+//   overflow: auto; /* Enable scroll if needed */
+//   background-color: rgb(0,0,0); /* Fallback color */
+//   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+// }
 
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%;
-}
+// /* Modal Content */
+// .modal-content {
+//   background-color: #fefefe;
+//   margin: auto;
+//   padding: 20px;
+//   border: 1px solid #888;
+//   width: 40%;
+// }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+// /* The Close Button */
+// .close {
+//   color: #aaaaaa;
+//   float: right;
+//   font-size: 28px;
+//   font-weight: bold;
 
-}
+// }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
+// .close:hover,
+// .close:focus {
+//   color: #000;
+//   text-decoration: none;
+//   cursor: pointer;
+// }
 
 #qrcode {
   border: 1px solid black;

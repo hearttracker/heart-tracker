@@ -41,8 +41,28 @@ router.post('/doctor/newPatient3', (req, res, next) => {
 });
 
 router.post('/doctor/newTreatment', (req, res, next) => {
-  req.session.treatments.push(req.body)
-  const treatments = req.session.treatments
+  const {name, doseTime, doseMeal, breakfast, lunch, dinner, night, doseQuantity, doseInterval, timeMeasure, startDate, endDate, recommendation} = req.body;
+  req.session.treatments.push({
+    name: name,
+    doseMeals: {
+      isSelected: doseMeal,
+      breakfast,
+      lunch,
+      dinner,
+      night,
+    },
+    doseTime: {
+      isSelected: doseTime,
+      quantity: doseQuantity,
+      interval: doseInterval,
+      timeMeasure: timeMeasure
+    },
+    startDate,
+    endDate,
+    recommendation
+  });
+  // req.session.treatments.push(req.body);
+  const treatments = req.session.treatments;
   console.log(treatments);
       res.render('doctor/newPatient3', {
       treatments
@@ -114,7 +134,7 @@ router.post("/doctor/newPatient4", async (req, res, next) => {
   const targetBloodPressureData = targetObjetiveBloodPressure.split("/");
 
 try {
-  const addedTreatments = await Treatment.insertMany(treatments)
+  const addedTreatments = await Treatment.insertMany(treatments);
   const patient = await Patient.create({
     firstName,
     lastName,
@@ -156,20 +176,26 @@ try {
     isMeasured: heartRateMeasured,
     min: minHeartRate,
     max: maxHeartRate,
-    target: targetObjetiveHeartRate
+    target: targetObjetiveHeartRate,
+    values: []
   },
   bloodSugarData:{
     isMeasured: bloodGlucoseMeasured,
     max: maxBloodGlucose,
     min: minBloodGlucose,
-  target:targetObjetiveBloodGlucose
+    target:targetObjetiveBloodGlucose,
+    values: []
   },
     allergies,
     alertLevel: alert,
     treatments: addedTreatments._id,
     assignedDoctor: req.session.user._id,
-    patientPin
-  })
+    patientPin,
+    values: []
+  });
+
+  const doctor = await Doctor.findByIdAndUpdate(patient.assignedDoctor, {$push: {patients: patient._id}});
+
   res.redirect(`/doctor/qrCode/${patient._id}`)
     // res.redirect(`/patient/${patient._id}`)
   

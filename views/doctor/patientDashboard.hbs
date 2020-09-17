@@ -1,6 +1,6 @@
 <div class='patientHeader'>
   <div id='contactInfo'>
-    <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Age: {{patientAge}}</span> <span>Patient
+    <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Birthdate: {{patient.birthDate}}</span> <span>Patient
       ID: {{patient.patientId}}</span>
     <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email:
       {{patient.contact.email}}</span>
@@ -84,8 +84,11 @@
   {{/each}}
     
   </div>
-
-
+  <div id='bpBsContainer'>
+  <div class='treatment' id='bpBsHeader'>
+    <button class='nextButton' id='bsNext'><p>>>Blood Pressure & Heart Frequency</p></button>
+    <button class='nextButton' id='bpNext'><p>>>Blood Sugar</p></button>
+  </div>
   <div class='treatment' id='bloodPressureParent'>
     {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
     <div id='bloodPressureContainer'>
@@ -114,7 +117,7 @@
 
     </div>
     </div>
-    <div><button class='nextButton' id='bpNext'><p>>>Blood Sugar</p></button></div>
+    
   </div>
 
   <div class='treatment' id='bloodSugarParent'>
@@ -145,9 +148,9 @@
      
     </div>
   </div>
-  <div><button class='nextButton' id='bsNext'><p>>>Blood Pressure & Heart Frequency</p></button></div>
-  </div>
   
+  </div>
+  </div>
 
 </div>
 
@@ -183,7 +186,7 @@
     <span class="close">&times;</span>
     <h5>Add new Blood Sugar Value</h5>
       <form action='/patient/{{patient._id}}' method='POST'>
-      <input type="hidden" name="hidden" value="bloodPressure">
+      <input type="hidden" name="hidden" value="bloodSugar">
       <label for="bloodSugar">Blood Sugar:</label>
       <input type="number" name="bloodSugar" required>
       <label for="date">Date</label>
@@ -196,6 +199,7 @@
 
 </div>
 
+<script src='/javascripts/buttons.js'></script>
 <script src='/javascripts/chart.js'></script>
 <script src='/javascripts/collapsible.js'></script>
 <script src='/javascripts/addValue.js'></script>

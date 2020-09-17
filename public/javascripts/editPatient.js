@@ -13,7 +13,7 @@ var span = document.getElementsByClassName("close")[0];
 btns.forEach(btn => {
   btn.addEventListener('click', event => {
     const patientId = btn.nextElementSibling.innerText;
-    fetch(`http://localhost:3000/api/patient/${patientId}`)
+    fetch(`/api/patient/${patientId}`)
     .then(response => response.json())
     .then(data => {
       document.getElementById('firstName').value = data.firstName;
@@ -33,21 +33,26 @@ btns.forEach(btn => {
       document.getElementById('sodium').value = data.lastMeasurements.sodium;
       document.getElementById('basalBloodGlucose').value = data.lastMeasurements.basalBloodGlucose;
       document.getElementById('allergies').value = data.allergies;
-      // document.getElementById('treatments').innerHTML.push(data.treatments.map(treatment => {
-      //   `<li>${treatment.name}</li>`
-      // }));
-      document.getElementsByName('bloodPressureMeasured')[0].value = data.bloodPressureData.isMeasured;
-      document.getElementsByName('minBloodPressure')[0].value = data.bloodPressureData.min;
-      document.getElementsByName('maxBloodPressure')[0].value = data.bloodPressureData.max;
-      document.getElementsByName('targetObjectiveBloodPressure')[0].value = data.bloodPressureData.target;
-      document.getElementsByName('heartRateMeasured')[0].value = data.heartFrequencyData.isMeasured;
-      document.getElementsByName('minHeartRate')[0].value = data.heartFrequencyData.min;
-      document.getElementsByName('maxHeartRate')[0].value = data.heartFrequencyData.max;
-      document.getElementsByName('targetObjectiveHeartRate')[0].value = data.heartFrequencyData.target;
-      document.getElementsByName('bloodGlucoseMeasured')[0].value = data.bloodGlucoseData.isMeasured;
-      document.getElementsByName('minBloodGlucose')[0].value = data.bloodGlucoseData.min;
-      document.getElementsByName('maxBloodGlucose')[0].value = data.bloodGlucoseData.max;
-      document.getElementsByName('targetObjectiveBloodGlucose')[0].value = data.bloodGlucoseData.target;
+      document.getElementById('diagnosis').value = data.diagnosis;
+
+      data.treatments.forEach(treatment => {
+        let node = document.createElement('li');
+        node.innerHTML = `<span> ${treatment.name} - <a href=/deleteTreatment/${treatment._id}>Delete</a> </span>`
+        document.getElementById('treatmentList').appendChild(node);
+        });
+ 
+      document.getElementById('bloodPressureMeasured').checked = data.bloodPressureData.isMeasured;
+      document.getElementById('minBloodPressure').value = `${data.bloodPressureData.min.systolic}/${data.bloodPressureData.min.diastolic}` ;
+      document.getElementById('maxBloodPressure').value = `${data.bloodPressureData.max.systolic}/${data.bloodPressureData.max.diastolic}` ;
+      document.getElementById('targetObjetiveBloodPressure').value = `${data.bloodPressureData.target.systolic}/${data.bloodPressureData.target.diastolic}` ;
+      document.getElementById('heartRateMeasured').checked = data.heartFrequencyData.isMeasured;
+      document.getElementById('minHeartRate').value = data.heartFrequencyData.min;
+      document.getElementById('maxHeartRate').value = data.heartFrequencyData.max;
+      document.getElementById('targetObjetiveHeartRate').value = data.heartFrequencyData.target;
+      document.getElementById('bloodGlucoseMeasured').checked = data.bloodSugarData.isMeasured;
+      document.getElementById('minBloodGlucose').value = data.bloodSugarData.min;
+      document.getElementById('maxBloodGlucose').value = data.bloodSugarData.max;
+      document.getElementById('targetObjetiveBloodGlucose').value = data.bloodSugarData.target;
 
 });
     modal.style.display = "block";
@@ -63,11 +68,13 @@ btns.forEach(btn => {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  document.getElementById('treatmentList').innerHTML = '';
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    document.getElementById('treatmentList').innerHTML = '';
   }
 }
