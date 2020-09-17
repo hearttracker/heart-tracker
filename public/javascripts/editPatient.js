@@ -34,21 +34,25 @@ btns.forEach(btn => {
       document.getElementById('basalBloodGlucose').value = data.lastMeasurements.basalBloodGlucose;
       document.getElementById('allergies').value = data.allergies;
       document.getElementById('diagnosis').value = data.diagnosis;
-      // document.getElementById('treatments').innerHTML.push(data.treatments.map(treatment => {
-      //   `<li>${treatment.name}</li>`
-      // }));
-      document.getElementById('bloodPressureMeasured').value = data.bloodPressureData.isMeasured;
-      document.getElementById('minBloodPressure').value = data.bloodPressureData.min;
-      document.getElementById('maxBloodPressure').value = data.bloodPressureData.max;
-      document.getElementById('targetObjectiveBloodPressure').value = data.bloodPressureData.target;
-      document.getElementById('heartRateMeasured').value = data.heartFrequencyData.isMeasured;
+
+      data.treatments.forEach(treatment => {
+        let node = document.createElement('li');
+        node.innerHTML = `<span> ${treatment.name} - <a href=/deleteTreatment/${treatment._id}>Delete</a> </span>`
+        document.getElementById('treatmentList').appendChild(node);
+        });
+ 
+      document.getElementById('bloodPressureMeasured').checked = data.bloodPressureData.isMeasured;
+      document.getElementById('minBloodPressure').value = `${data.bloodPressureData.min.systolic}/${data.bloodPressureData.min.diastolic}` ;
+      document.getElementById('maxBloodPressure').value = `${data.bloodPressureData.max.systolic}/${data.bloodPressureData.max.diastolic}` ;
+      document.getElementById('targetObjetiveBloodPressure').value = `${data.bloodPressureData.target.systolic}/${data.bloodPressureData.target.diastolic}` ;
+      document.getElementById('heartRateMeasured').checked = data.heartFrequencyData.isMeasured;
       document.getElementById('minHeartRate').value = data.heartFrequencyData.min;
       document.getElementById('maxHeartRate').value = data.heartFrequencyData.max;
-      document.getElementById('targetObjectiveHeartRate').value = data.heartFrequencyData.target;
-      document.getElementById('bloodGlucoseMeasured').value = data.bloodGlucoseData.isMeasured;
-      document.getElementById('minBloodGlucose').value = data.bloodGlucoseData.min;
-      document.getElementById('maxBloodGlucose').value = data.bloodGlucoseData.max;
-      document.getElementById('targetObjectiveBloodGlucose').value = data.bloodGlucoseData.target;
+      document.getElementById('targetObjetiveHeartRate').value = data.heartFrequencyData.target;
+      document.getElementById('bloodGlucoseMeasured').checked = data.bloodSugarData.isMeasured;
+      document.getElementById('minBloodGlucose').value = data.bloodSugarData.min;
+      document.getElementById('maxBloodGlucose').value = data.bloodSugarData.max;
+      document.getElementById('targetObjetiveBloodGlucose').value = data.bloodSugarData.target;
 
 });
     modal.style.display = "block";
@@ -64,11 +68,13 @@ btns.forEach(btn => {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+  document.getElementById('treatmentList').innerHTML = '';
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    document.getElementById('treatmentList').innerHTML = '';
   }
 }

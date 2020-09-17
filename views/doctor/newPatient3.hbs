@@ -16,7 +16,8 @@
   <tr>
     <td>{{name}}</td>
 
-    {{#if dosePerMeal}}
+    {{#if perMeal}}
+
     <td>Per Meal</td>
     {{else}}
     <td>Per Time</td>
@@ -50,8 +51,9 @@
       <h4>Dose</h4>
 
 
-  <input type="radio" name="dosePer" id="perMeal" value="true">Per meal<br>
-  <input type="radio" name="dosePer" id="perTime" value="true">Per time
+  <input type="radio" name="doseMeal" id="perMeal" value="true">Per meal<br>
+  <input type="radio" name="doseTime" id="perTime" value="true">Per time
+
 </div>
 <div class="dose-per-meal">
   <h2>Dose per Meal</h2>
