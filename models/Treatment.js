@@ -21,8 +21,8 @@ const treatmentSchema = new Schema({
         enum: ['months', 'weeks', 'days', 'hours']
       },
     },
-    startDate: Date,
-    endDate: Date,
+    startDate: String,
+    endDate: String,
     recommendation: String
 });
 
