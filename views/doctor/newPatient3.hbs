@@ -8,7 +8,6 @@
   <tr>
     <th>Name</th>
     <th>Dose</th>
-    <th>Duration</th>
     <th>Start Date</th>
     <th>End Date</th>
   </tr>
@@ -17,7 +16,6 @@
     <td>{{name}}</td>
     {{!-- {{#if dose}} --}}
     <td>{{dose}}</td>
-    <td>{{duration}}</td>
     <td>{{startDate.[1]}}</td>
     <td>{{endDate}}</td>
   </tr>
@@ -44,8 +42,8 @@
   <div>
       <h4>Dose</h4>
 
-  <input type="radio" name="dose" id="perMeal" value="true">Per meal<br>
-  <input type="radio" name="dose" id="perTime" value="true">Per time
+  <input type="radio" name="dose" id="perMeal" value="Every meal">Per meal<br>
+  <input type="radio" name="dose" id="perTime" value="Every time">Per time
 </div>
 <div class="dose-per-meal">
   <h2>Dose per Meal</h2>
@@ -142,7 +140,7 @@
 </div>
 <div>
 
-  <input type="radio" name="startDate" id="startDate" value="true">Today<br>
+  <input type="radio" name="startDate" id="startDate" value="Today">Today<br>
   <input type="radio" name="startDate" id="startDate">Choose start date
   <input type="date" name="startDate" id="startDate" >Choose end date
   <input type="date" name="endDate" id="endDate" >
@@ -153,7 +151,7 @@
     
   <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
           
-          <input type="radio" name="duration" id="duration">
+          <input type="radio" name="duration" id="duration" >
                   <label for="doseIntervalsPerTime">For</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">1</option>

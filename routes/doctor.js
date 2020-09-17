@@ -71,6 +71,7 @@ router.get("/doctor/newPatient4", (req, res, next) => {
 
 
 router.post("/doctor/newPatient4", async (req, res, next) => {
+  const patientPin = Math.floor(Math.random()*1000000);
   const treatments = req.session.treatments
   let currentPatient = req.session.currentPatient
   console.log("current patient info in the end", currentPatient);
@@ -166,7 +167,8 @@ try {
     allergies,
     alertLevel: alert,
     treatments: addedTreatments._id,
-    assignedDoctor: req.session.user._id
+    assignedDoctor: req.session.user._id,
+    patientPin
   })
   res.redirect(`/doctor/qrCode/${patient._id}`)
     // res.redirect(`/patient/${patient._id}`)
