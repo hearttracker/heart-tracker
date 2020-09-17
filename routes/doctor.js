@@ -41,18 +41,18 @@ router.post('/doctor/newPatient3', (req, res, next) => {
 });
 
 router.post('/doctor/newTreatment', (req, res, next) => {
-  const {name, dosePerTime, dosePerMeal, breakfast, lunch, dinner, night, doseQuantity, doseInterval, timeMeasure, startDate, endDate, recommendation} = req.body;
+  const {name, doseTime, doseMeal, breakfast, lunch, dinner, night, doseQuantity, doseInterval, timeMeasure, startDate, endDate, recommendation} = req.body;
   req.session.treatments.push({
     name: name,
     doseMeals: {
-      isSelected: dosePer,
+      isSelected: doseMeal,
       breakfast,
       lunch,
       dinner,
       night,
     },
     doseTime: {
-      isSelected: dosePer,
+      isSelected: doseTime,
       quantity: doseQuantity,
       interval: doseInterval,
       timeMeasure: timeMeasure

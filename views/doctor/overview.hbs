@@ -1,22 +1,26 @@
-<h1>Patient Overview</h1>
-<a href="/logout">Log Out</a>
-<a href="/doctor/newPatient1">create new patient</a>
-
-<div class='searchbar'>
-  <input type="text" name="alert" placeholder="Alert"> <input type="name" name="name" placeholder="Name"> <input
-    type="text" name="surname" placeholder="Surname"> <input type="number" name="age" placeholder="Age"> <input
-    type="string" name="lastUpdate" placeholder="Last Update (DD.MM.YYYY)">
-  <button type="submit">Search</button>
+<div class='logoHeader'>
+<a href="/overview" id='homeButton'><div ></div></a>
+<div id='imgPlaceholder'>CORVIS</div>
+<a href="/logout"><div>Logout</div></a>
 </div>
-<div class="tablecontainer">
-  <table class="table">
+
+<div id='overviewContainer'>
+
+<div id="addPatientContainer">
+  <a href="/doctor/newPatient1" id='addPatient'>Add Patient</a>
+</div>
+
+
+  <table id='overviewTable'>
     <thead>
       <tr>
         <th>Alert</th>
-        <th>Name</th>
-        <th>Surname</th>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Birth Date</th>
         <th>Last Update</th>
+        <th><input type="text" name="searchValue" placeholder="Search" id='searchField'></th>
+
       </tr>
     </thead>
     <br>
@@ -41,7 +45,9 @@
       {{/each}}
     </tbody>
   </table>
-</div>
+
+  </div>
+
 
 <!-- The Modal -->
 <div id="editModal" class="modal">
@@ -129,7 +135,8 @@
 
   <div>
     <h5>Treatments</h5>
-    <ul id='treatments'>
+    <ul id='treatmentList'>
+
     </ul>
   </div>
   <div>
@@ -137,7 +144,7 @@
       <h4>Measures to be registered</h4>
 
 
-      <input type="checkbox" name="bloodPressureMeasured" value="true"> blood pressure<br>
+      <input type="checkbox" name="bloodPressureMeasured" id="bloodPressureMeasured" value="true"> Blood Pressure<br>
       <div class="dropdown">
         <label for="minBloodPressure">Min</label>
         <input type="text" name="minBloodPressure" id="minBloodPressure">
@@ -147,7 +154,7 @@
         <input type="text" name="targetObjetiveBloodPressure" id="targetObjetiveBloodPressure">
       </div>
 
-      <input type="checkbox" value="true" name="heartRateMeasured"> heart rate <br>
+      <input type="checkbox" value="true" name="heartRateMeasured" id="heartRateMeasured"> Heart Rate <br>
       <div class="dropdown">
         <label for="minHeartRate">Min</label>
         <input type="number" name="minHeartRate" id="minHeartRate">
@@ -157,7 +164,7 @@
         <input type="number" name="targetObjetiveHeartRate" id="targetObjetiveHeartRate">
       </div>
 
-      <input type="checkbox" value="true" name="bloodGlucoseMeasured"> blood glucose
+      <input type="checkbox" value="true" name="bloodGlucoseMeasured" id="bloodGlucoseMeasured"> Blood Glucose
       <div class="dropdown">
         <label for="minBloodGlucose">Min</label>
         <input type="number" name="minBloodGlucose" id="minBloodGlucose">
@@ -181,6 +188,7 @@
       <input type="radio" name="notification" value="outOfRange">Data out of range
       <input type="radio" name="notification" value="always">Always
     </div>
+    <button type='submit'>Save</button>
   </form>
 </div>
 </div>
@@ -190,3 +198,4 @@
 
 
 <script src='/javascripts/editPatient.js'></script>
+
