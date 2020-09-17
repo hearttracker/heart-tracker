@@ -2,14 +2,14 @@
 <h1>hello {{firstName}} {{lastName}}</h1>
  <div style="display:none" id='hiddenId'>{{_id}}</div>
 <canvas id="bloodPressureGraph"></canvas>
+{{/with}}
 
 <canvas id="bloodSugarChart"></canvas>
-{{!-- {{#with currentPatient}} --}}
 <div>
 <button type="submit" id="myBtn">Add new results</button>
 
 
-<h2>Basic HTML Table</h2>
+<h2>Added data by you</h2>
 
 <table style="width:100%">
   <tr>
@@ -19,13 +19,22 @@
     <th>Comment</th>
     <th>Date</th>
   </tr>
+    {{#each values}}
   <tr>
+    <td>{{bloodPressureData.systolic}}/{{bloodPressureData.diastolic}}</td>
+    <td>{{heartFrequencyData}}</td>
+    <td>{{bloodSugarData}}</td>
+    <td>{{comment}}</td>
+    <td>{{date}}</td>
+  </tr>
+    
+    {{/each}}
 
   {{!-- {{#each bloodPressureData.values}}
     <td>{{systolic}}/{{diastolic}}</td>
-    <td>{{ heartFrequencyData}}</td>
 {{/each}} --}}
-{{!-- {{#each heartFrequencyData.values}}
+    {{!-- <td>{{ heartFrequencyData}}</td> --}}
+{{!-- {{#each patient.heartFrequencyData.values}}
     <td>{{value}}</td>
 {{/each}} --}}
 {{!-- {{#each bloodSugarData.values}}
@@ -39,6 +48,7 @@
 
 
 
+{{#with patient}}
 
 <form action="/addMeasure/{{_id}}" method="POST">
 
@@ -69,7 +79,7 @@
  <h3> heart rate: </h3> <br>
   <div class="dropdown">
     <label for="heartRate">Insert a number: </label>
-<input type="number" name="HeartRate">
+<input type="number" name="heartRate">
 
 
   </div>
@@ -77,7 +87,7 @@
  <h3>blood glucose: </h3> <br>
   <div class="dropdown">
     <label for="bloodGlucose">Insert a number: </label>
-<input type="number" name="BloodGlucose">
+<input type="number" name="bloodGlucose">
 
 
   </div>
@@ -109,10 +119,8 @@
 
 
 
-
-
-
 {{/with}}
+
 
 
 
