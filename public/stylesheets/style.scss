@@ -108,7 +108,7 @@ a {
   justify-content: flex-start;
   width: 90vw;
   height: 70vh;
-
+  position: relative;
 }
 
 .treatment {
@@ -123,13 +123,136 @@ a {
   width: 20%;
 }
 
-
-.treatment {
-  width: 33%
+#bloodPressureParent {
+  display: none;
+  flex-direction: row;
+  position: absolute;
+  width: 80%;
+  left: 260px;
+  justify-content: center;
+  align-items: center;
 }
-#heartRateContainer {
+
+
+#bloodPressureContainer {
   display: flex;
   height: 100%
+}
+
+
+#bloodPressureGraphContainer {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#bloodPressureGraph {
+  height: 40%;
+  width: 50%
+}
+
+#bloodPressureTable {
+ overflow: scroll;
+ height: 100%;
+ width: 50%;
+}
+
+
+#bloodSugarParent {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  width: 80%;
+  left: 260px;
+  justify-content: center;
+  align-items: center;
+}
+
+#bloodSugarContainer {
+  display: flex;
+  height: 100%
+}
+
+#bloodSugarGraphContainer {
+  width: 60%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#bloodSugarChart {
+  height: 40%;
+  width: 50%
+}
+
+#bloodSugarTable {
+  overflow: scroll;
+  height: 100%;
+  width: 50%;
+ }
+
+ .addButton {
+   position: relative;
+   background-color: grey;
+   color: white;
+   text-align: center;
+  text-decoration: none;
+  border-radius: 100px;
+  width: 20px;
+  height: 20px;
+ }
+
+ .nextButton {
+  height: 30vh;
+  width: 10vw;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+
+}
+
+ /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #qrcode {
