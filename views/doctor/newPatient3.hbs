@@ -8,17 +8,21 @@
   <tr>
     <th>Name</th>
     <th>Dose</th>
-    <th>Duration</th>
+    {{!-- <th>Duration</th> --}}
     <th>Start Date</th>
     <th>End Date</th>
   </tr>
 {{#each treatments}}
   <tr>
     <td>{{name}}</td>
-    {{!-- {{#if dose}} --}}
-    <td>{{dose}}</td>
-    <td>{{duration}}</td>
-    <td>{{startDate.[1]}}</td>
+    {{#if dosePerMeal}}
+    <td>Per Meal</td>
+    {{else}}
+    <td>Per Time</td>
+    {{/if}}
+    {{!-- <td>{{dose}}</td>
+    <td>{{duration}}</td> --}}
+    <td>{{startDate}}</td>
     <td>{{endDate}}</td>
   </tr>
 {{/each}}
@@ -44,8 +48,8 @@
   <div>
       <h4>Dose</h4>
 
-  <input type="radio" name="dose" id="perMeal" value="true">Per meal<br>
-  <input type="radio" name="dose" id="perTime" value="true">Per time
+  <input type="radio" name="dosePer" id="perMeal" value="true">Per meal<br>
+  <input type="radio" name="dosePer" id="perTime" value="true">Per time
 </div>
 <div class="dose-per-meal">
   <h2>Dose per Meal</h2>
@@ -110,7 +114,7 @@
 <div class="dose-per-time">
   <h2>Dose per Time</h2>
     <p>
-    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
+    <select name="doseQuantity" id="doseIntervalsPerTime">
       <option value="1">1 pill</option>
       <option value="2">2 pills</option>
       <option value="3">3 pills</option>
@@ -121,7 +125,7 @@
       <option value="8">8 pills</option>
     </select>
         <label for="doseIntervalsPerTime">every</label>
-    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
+    <select name="doseInterval" id="doseIntervalsPerTime">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -132,28 +136,30 @@
       <option value="8">8</option>
     </select>
 
-    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
-      <option value="1">hours</option>
-      <option value="2">days</option>
-      <option value="3">week</option>
-      <option value="4">month</option>
+    <select name="timeMeasure" id="doseIntervalsPerTime">
+      <option value="hours">hours</option>
+      <option value="days">days</option>
+      <option value="week">week</option>
+      <option value="month">month</option>
     </select>
   </p>
 </div>
-<div>
 
-  <input type="radio" name="startDate" id="startDate" value="true">Today<br>
-  <input type="radio" name="startDate" id="startDate">Choose start date
-  <input type="string" name="startDate" id="startDate" placeholder="DD.MM.YYYY">Choose end date
-  <input type="string" name="endDate" id="endDate" placeholder="DD.MM.YYYY">
-
-</div>
 <div>
   <h2>Duration</h2>
-    
-  <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
-          
-          <input type="radio" name="duration" id="duration">
+
+  <div>
+
+  <span>Choose start date</span>
+  <input type="string" name="startDate" id="startDate" placeholder="DD.MM.YYYY">
+  <span>Choose end date</span>
+  <input type="string" name="endDate" id="endDate" placeholder="DD.MM.YYYY">
+
+</div>  
+
+  {{!-- <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
+           --}}
+          {{!-- <input type="radio" name="duration" id="duration">
                   <label for="doseIntervalsPerTime">For</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">1</option>
@@ -173,7 +179,7 @@
       <option value="days">days</option>
       <option value="weeks">weeks</option>
       <option value="months">months</option>
-    </select>
+    </select> --}}
   </p>
 </div>
 <div class="recommendations">
