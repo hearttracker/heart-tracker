@@ -8,13 +8,14 @@
   <tr>
     <th>Name</th>
     <th>Dose</th>
-    {{!-- <th>Duration</th> --}}
+
     <th>Start Date</th>
     <th>End Date</th>
   </tr>
 {{#each treatments}}
   <tr>
     <td>{{name}}</td>
+
     {{#if dosePerMeal}}
     <td>Per Meal</td>
     {{else}}
@@ -47,6 +48,7 @@
   </div>
   <div>
       <h4>Dose</h4>
+
 
   <input type="radio" name="dosePer" id="perMeal" value="true">Per meal<br>
   <input type="radio" name="dosePer" id="perTime" value="true">Per time
@@ -145,8 +147,10 @@
   </p>
 </div>
 
+
 <div>
   <h2>Duration</h2>
+
 
   <div>
 
@@ -160,6 +164,7 @@
   {{!-- <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
            --}}
           {{!-- <input type="radio" name="duration" id="duration">
+
                   <label for="doseIntervalsPerTime">For</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">1</option>

@@ -91,6 +91,7 @@ router.get("/doctor/newPatient4", (req, res, next) => {
 
 
 router.post("/doctor/newPatient4", async (req, res, next) => {
+  const patientPin = Math.floor(Math.random()*1000000);
   const treatments = req.session.treatments
   let currentPatient = req.session.currentPatient
   console.log("current patient info in the end", currentPatient);
@@ -189,12 +190,12 @@ try {
     alertLevel: alert,
     treatments: addedTreatments._id,
     assignedDoctor: req.session.user._id,
+    patientPin,
     values: []
   });
 
-  console.log(patient.assignedDoctor,"It this a the id???")
   const doctor = await Doctor.findByIdAndUpdate(patient.assignedDoctor, {$push: {patients: patient._id}});
-  console.log(doctor.patients);
+
   res.redirect(`/doctor/qrCode/${patient._id}`)
     // res.redirect(`/patient/${patient._id}`)
   

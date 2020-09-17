@@ -19,7 +19,7 @@ const patientSchema = new Schema({
     email: {
       type: String,
       required: true,
-      // unique: true
+      unique: true
     },
     telephone: {
       type: Number,
@@ -95,7 +95,11 @@ const patientSchema = new Schema({
     ref: 'Doctor',
     required: true
   },
-  lastUpdate: String
+  lastUpdate: String,
+  patientPin: {
+    required: true,
+    type: Number
+  }
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

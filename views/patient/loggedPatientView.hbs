@@ -1,0 +1,155 @@
+{{#with patient}}
+<h1>hello {{firstName}} {{lastName}}</h1>
+ <div style="display:none" id='hiddenId'>{{_id}}</div>
+<canvas id="bloodPressureGraph"></canvas>
+
+<canvas id="bloodSugarChart"></canvas>
+{{!-- {{#with currentPatient}} --}}
+<div>
+<button type="submit" id="myBtn">Add new results</button>
+
+
+<h2>Basic HTML Table</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Blood Pressure</th>
+    <th>Heart Rate</th> 
+    <th>Blood Glucose</th>
+    <th>Comment</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+
+  {{!-- {{#each bloodPressureData.values}}
+    <td>{{systolic}}/{{diastolic}}</td>
+    <td>{{ heartFrequencyData}}</td>
+{{/each}} --}}
+{{!-- {{#each heartFrequencyData.values}}
+    <td>{{value}}</td>
+{{/each}} --}}
+{{!-- {{#each bloodSugarData.values}}
+    <td>{{value}}</td>
+    <td>{{comment}}</td>
+    <td>{{date}}</td>
+{{/each}} --}}
+  </tr>
+</table>
+
+
+
+
+
+<form action="/addMeasure/{{_id}}" method="POST">
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <div>
+  
+
+
+<div>
+
+<h2>Measures to be registered</h2>
+<label for="date">Date</label>
+<input type="text" name="date" id="date" placeholder="DD.MM.YYY">
+<h3> blood pressure: </h3><br>
+  <div class="dropdown">
+    <label for="bloodPressure">Insert data like this: </label>
+<input type="text" name="bloodPressure" placeholder="120/80">
+
+
+  </div>
+
+ <h3> heart rate: </h3> <br>
+  <div class="dropdown">
+    <label for="heartRate">Insert a number: </label>
+<input type="number" name="HeartRate">
+
+
+  </div>
+
+ <h3>blood glucose: </h3> <br>
+  <div class="dropdown">
+    <label for="bloodGlucose">Insert a number: </label>
+<input type="number" name="BloodGlucose">
+
+
+  </div>
+</div>
+
+
+
+
+
+
+  
+<div class="comments">
+  <h4>Comments</h4>
+  <textarea name="comment" rows="10" cols="30">
+</textarea>
+
+</div>
+
+<button type="submit">add new data</button>
+{{!-- end of modal --}}
+</div>
+  
+  </div>
+</div>
+
+
+</form>
+
+
+
+
+
+
+
+{{/with}}
+
+
+
+<script>
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  //$(":radio[name=dose-per-meal]").click(function() {
+ // $(this).nextAll('select').attr('disabled', !$(this).hasClass("dose-per-time"));
+//});
+</script>
+
+
+
+<script src="/javascripts/chart.js"></script>
+
