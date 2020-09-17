@@ -139,6 +139,7 @@ a {
   height: 100%
 }
 
+
 #bloodPressureGraphContainer {
   width: 60%;
   position: relative;
@@ -254,3 +255,7 @@ a {
   cursor: pointer;
 }
 
+#qrcode {
+  border: 1px solid black;
+  height: 250px; 
+}
