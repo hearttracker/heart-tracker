@@ -100,7 +100,7 @@ const bloodPressureChart = (bloodPressureData, heartFrequencyData) => {
 
 const patientId = document.getElementById('hiddenId').innerText;
 
-fetch(`http://localhost:3000/api/patient/${patientId}`)
+fetch(`/api/patient/${patientId}`)
 .then(response => response.json())
 .then(data => {
   console.log(data);
