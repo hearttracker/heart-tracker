@@ -110,7 +110,17 @@
 <div class="dose-per-time">
   <h2>Dose per Time</h2>
     <p>
-    <label for="doseIntervalsPerTime">Pill</label>
+    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
+      <option value="1">1 pill</option>
+      <option value="2">2 pills</option>
+      <option value="3">3 pills</option>
+      <option value="4">4 pills</option>
+      <option value="5">5 pills</option>
+      <option value="6">6 pills</option>
+      <option value="7">7 pills</option>
+      <option value="8">8 pills</option>
+    </select>
+        <label for="doseIntervalsPerTime">every</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -121,19 +131,7 @@
       <option value="7">7</option>
       <option value="8">8</option>
     </select>
-    <h4>every</h4>
-        <label for="doseIntervalsPerTime">Pill/s</label>
-    <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-        <label for="doseIntervalsPerTime">each</label>
+
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">hours</option>
       <option value="2">days</option>
@@ -156,6 +154,7 @@
   <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
           
           <input type="radio" name="duration" id="duration">
+                  <label for="doseIntervalsPerTime">For</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
       <option value="1">1</option>
       <option value="2">2</option>

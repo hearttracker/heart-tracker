@@ -4,29 +4,29 @@
   <form action="/doctor/newPatient2" method="POST">
   <div>
   <label for="firstName">First Name:</label>
-  <input type="text" name="firstName" id="firstName" value="{{firstName}}">
+  <input type="text" name="firstName" id="firstName" value="{{currentPatient.firstName}}">
 
     <label for="lastName">Last Name:</label>
-  <input type="text" name="lastName" id="lastName" value="{{lastName}}">
+  <input type="text" name="lastName" id="lastName" value="{{currentPatient.lastName}}">
 
     <label for="secondLastName">Second Last Name:</label>
-  <input type="text" name="secondLastName" id="secondLastName" value="{{secondLastName}}">
+  <input type="text" name="secondLastName" id="secondLastName" value="{{currentPatient.secondLastName}}">
 
     <label for="birthDate">Date of birth:</label>
   <input type="string" name="birthDate" id="birthDate" placeholder="DD.MM.YYYY" value="{{birthDate}}">
 </div>
 <div>
     <label for="id">ID:</label>
-  <input type="number" name="id" id="id" value="{{id}}">
+  <input type="number" name="id" id="id" value="{{currentPatient.id}}">
 
     <label for="tis">TIS:</label>
-  <input type="number" name="tis" id="tis" value="{{tis}}">
+  <input type="number" name="tis" id="tis" value="{{currentPatient.tis}}">
 
     <label for="phoneNumber">Phone:</label>
-  <input type="number" name="phoneNumber" id="phoneNumber" value="{{phoneNumber}}">
+  <input type="number" name="phoneNumber" id="phoneNumber" value="{{currentPatient.phoneNumber}}">
 
     <label for="email">Email:</label>
-  <input type="text" name="email" id="email" value="{{email}}">
+  <input type="text" name="email" id="email" value="{{currentPatient.email}}">
   </div>
 </div>
 <button type="submit">Next</button>

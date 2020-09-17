@@ -52,16 +52,19 @@ router.post('/doctor/newTreatment', (req, res, next) => {
 
 
 router.get("/doctor/newPatient3", (req,res,next) => {
+  const treatments = req.session.treatments;
   const currentPatient = req.session.currentPatient;
   res.render("doctor/newPatient3", {
-    currentPatient
+    currentPatient, treatments
   })
   
 })
 
-router.get("/doctor/newPatient4", (req,res,next) => {
-  console.log("info so far: ", req.session.currentPatient);
-  res.render("doctor/newPatient4")
+router.get("/doctor/newPatient4", (req, res, next) => {
+  const currentPatient = req.session.currentPatient;
+  res.render("doctor/newPatient4", {
+    currentPatient
+  })
   
 })
 
@@ -122,7 +125,8 @@ try {
       telephone: phoneNumber,
       email,
     },
-    lastMeasurements: {totalColesterol,
+    lastMeasurements: {
+      totalColesterol,
     ldl,
     hdl,
     triglycerides,
@@ -164,7 +168,8 @@ try {
     treatments: addedTreatments._id,
     assignedDoctor: req.session.user._id
   })
-    res.redirect(`/patient/${patient._id}`)
+  res.redirect(`/doctor/qrCode/${patient._id}`)
+    // res.redirect(`/patient/${patient._id}`)
   
 } catch (error) {
   next(error)
@@ -172,5 +177,16 @@ try {
 
 })
 
+router.get("/doctor/qrCode/:patientId", async (req, res, next) => {
+  const patient = await Patient.findById(req.params.patientId)
+  try{
+    console.log("patient in qrcode", patient);
+  res.render("doctor/qrCode", {
+    patient
+  });
+} catch(error) {
+  next(error)
+}
+})
 
 module.exports = router;
