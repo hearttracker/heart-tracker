@@ -114,6 +114,18 @@ a {
 #treatmentsContainer {
   width: 20%; }
 
+
+.treatment {
+  width: 33%; }
+
+#heartRateContainer {
+  display: flex;
+  height: 100%; }
+
+#qrcode {
+  border: 1px solid black;
+  height: 250px; }
+
 #bloodPressureParent {
   display: none;
   flex-direction: row;
@@ -237,5 +249,6 @@ a {
 #qrcode {
   border: 1px solid black;
   height: 250px; }
+
 
 /*# sourceMappingURL=style.css.map */
