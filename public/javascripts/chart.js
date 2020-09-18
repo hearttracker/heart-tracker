@@ -1,5 +1,6 @@
 
 
+
 const bloodSugarChart = (data) => {
   const dates = data.slice(0,10).map(value => (value.date).toString());
   console.log({ dates })
@@ -40,8 +41,7 @@ const bloodSugarChart = (data) => {
               scaleShowLabels : false
 
           }
-        ]
-      }
+        ]},
   }
   });
 };
@@ -125,13 +125,19 @@ const patientId = document.getElementById('hiddenId').innerText;
 fetch(`/api/patient/${patientId}`)
 .then(response => response.json())
 .then(data => {
-  console.log(data.heartFrequencyData);
-  // if(data.bloodSugarData.isMeasured) {
     bloodSugarChart(data.bloodSugarData.values);
-  // };
-  // if(data.bloodPressureData.isMeasured && data.heartFrequencyData.isMeasured) {
-    bloodPressureChart(data.bloodPressureData.values, data.heartFrequencyData.values)
-  // };
+    bloodPressureChart(data.bloodPressureData.values, data.heartFrequencyData.values);
+    data.bloodSugarData.values.map(v => {
+      let node = document.createElement('tr');
+      node.innerHTML = `
+      <td>${v.date.substring(0, v.date.length-4)}</td>
+      <td>${v.value}</td>
+      <td>${v.comment}</td>`;
+      console.log(node);
+      document.getElementById('bloodSugarTableBody').appendChild(node);
+    })
+    console.log(data.bloodSugarData.values);
+  
 });
 
 

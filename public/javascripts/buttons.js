@@ -2,16 +2,32 @@ const bpButton = document.getElementById('bpNext');
 const bsButton = document.getElementById('bsNext');
 
 bpButton.addEventListener('click', function() {
-  console.log('clicked');
   document.getElementById('bloodPressureParent').style.display = 'none';
   document.getElementById('bloodSugarParent').style.display = 'flex';
+  bpButton.classList.add('button-clicked');
+  bsButton.classList.remove('button-clicked');
 })
 
 bsButton.addEventListener('click', function() {
   console.log('clicked');
   document.getElementById('bloodSugarParent').style.display = 'none';
   document.getElementById('bloodPressureParent').style.display = 'flex';
+  bpButton.classList.remove('button-clicked');
+  bsButton.classList.add('button-clicked');
 })
+
+console.log(document.getElementById('hiddenDisplayToggle').innerText);
+if(document.getElementById('hiddenDisplayToggle').innerText === 'bloodPressure') {
+  document.getElementById('bloodSugarParent').style.display = 'none';
+  document.getElementById('bloodPressureParent').style.display = 'flex';
+  bsButton.classList.remove('button-clicked');
+  bpButton.classList.add('button-clicked');
+} else if(document.getElementById('hiddenDisplayToggle').innerText === 'bloodSugar') {
+  document.getElementById('bloodPressureParent').style.display = 'none';
+  document.getElementById('bloodSugarParent').style.display = 'flex';
+  bsButton.classList.add('button-clicked');
+  bpButton.classList.remove('button-clicked');
+}
 
 // const bloodPressure = document.getElementById('heartRateContainer');
 // const bloodSugar = document.getElementById('bloodSugarContainer');
