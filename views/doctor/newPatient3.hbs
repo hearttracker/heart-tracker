@@ -1,171 +1,185 @@
-<h1>nuevo paciente 3</h1>
-{{!-- {{#with currentPatient}} --}}
-<div>
-<h2>Treatments</h2>
-<button id="myBtn">Create treatment</button>
-<table class="treatment-table">
-  <colgroup span="4"></colgroup>
-  <tr>
-    <th>Name</th>
-    <th>Dose</th>
+<div class='logoHeader'>
+  <a href="/overview" id='homeButton'>
+    <div> ◀︎ Back To Patient Overview</div>
+  </a>
+  <a href="/logout">
+    <div>Logout</div>
+  </a>
+</div>
 
-    <th>Start Date</th>
-    <th>End Date</th>
-  </tr>
-{{#each treatments}}
-  <tr>
-    <td>{{name}}</td>
+<div class='newPatientContainer'>
+  <div class='newPatientForm'>
+    <div class='newPatientHeaderContainer'>
 
-    {{#if perMeal}}
+      <h2>New Patient</h2>
+      {{!-- {{#with currentPatient}} --}}
+      <h4>3. Treatments</h4>
+    </div>
 
-    <td>Per Meal</td>
-    {{else}}
-    <td>Per Time</td>
-    {{/if}}
-    {{!-- <td>{{dose}}</td>
+    <button id="myBtn">Create treatment</button>
+    <table class="treatment-table">
+      <colgroup span="4"></colgroup>
+      <tr>
+        <th>Name</th>
+        <th>Dose</th>
+
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      {{#each treatments}}
+      <tr>
+        <td>{{name}}</td>
+
+        {{#if perMeal}}
+
+        <td>Per Meal</td>
+        {{else}}
+        <td>Per Time</td>
+        {{/if}}
+        {{!-- <td>{{dose}}</td>
     <td>{{duration}}</td> --}}
-    <td>{{startDate}}</td>
-    <td>{{endDate}}</td>
-  </tr>
-{{/each}}
+        <td>{{startDate}}</td>
+        <td>{{endDate}}</td>
+      </tr>
+      {{/each}}
 
-</table>
-
-
-<form action="/doctor/newTreatment" method="POST">
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>New Treatment</h2>
-    <div>
-  
-    <h4>Drug</h4>
-      <label for="name">Drug name:</label>
-  <input type="text" name="name" id="name" value="{{name}}">
-  </div>
-  <div>
-      <h4>Dose</h4>
+    </table>
 
 
-  <input type="radio" name="doseMeal" id="perMeal" value="true">Per meal<br>
-  <input type="radio" name="doseTime" id="perTime" value="true">Per time
+    <form action="/doctor/newTreatment" method="POST">
 
-</div>
-<div class="dose-per-meal">
-  <h2>Dose per Meal</h2>
-  <p>
-    <label for="breakfast">Breakfast</label>
-    <select name="breakfast" id="breakfast" >
-      <option value="">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-  </p>
-    <p>
-    <label for="lunch">Lunch</label>
-    <select name="lunch" id="lunch" >
-      <option value="">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-  </p>
-    <p>
-    <label for="dinner">Dinner</label>
-    <select name="dinner" id="dinner" >
-      <option value="">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-  </p>
-    <p>
-    <label for="night">Night</label>
-    <select name="night" id="night" >
-      <option value="">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
-  </p>
-  
-</div>
-<div class="dose-per-time">
-  <h2>Dose per Time</h2>
-    <p>
-    <select name="doseQuantity" id="doseIntervalsPerTime">
-      <option value="1">1 pill</option>
-      <option value="2">2 pills</option>
-      <option value="3">3 pills</option>
-      <option value="4">4 pills</option>
-      <option value="5">5 pills</option>
-      <option value="6">6 pills</option>
-      <option value="7">7 pills</option>
-      <option value="8">8 pills</option>
-    </select>
-        <label for="doseIntervalsPerTime">every</label>
-    <select name="doseInterval" id="doseIntervalsPerTime">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-    </select>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
 
-    <select name="timeMeasure" id="doseIntervalsPerTime">
-      <option value="hours">hours</option>
-      <option value="days">days</option>
-      <option value="week">week</option>
-      <option value="month">month</option>
-    </select>
-  </p>
-</div>
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>New Treatment</h2>
+          <div>
+
+            <h4>Drug</h4>
+            <label for="name">Drug name:</label>
+            <input type="text" name="name" id="name" value="{{name}}">
+          </div>
+          <div>
+            <h4>Dose</h4>
 
 
-<div>
-  <h2>Duration</h2>
+            <input type="radio" name="doseMeal" id="perMeal" value="true">Per meal<br>
+            <input type="radio" name="doseTime" id="perTime" value="true">Per time
+
+          </div>
+          <div class="dose-per-meal">
+            <h2>Dose per Meal</h2>
+            <p>
+              <label for="breakfast">Breakfast</label>
+              <select name="breakfast" id="breakfast">
+                <option value="">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </p>
+            <p>
+              <label for="lunch">Lunch</label>
+              <select name="lunch" id="lunch">
+                <option value="">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </p>
+            <p>
+              <label for="dinner">Dinner</label>
+              <select name="dinner" id="dinner">
+                <option value="">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </p>
+            <p>
+              <label for="night">Night</label>
+              <select name="night" id="night">
+                <option value="">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </p>
+
+          </div>
+          <div class="dose-per-time">
+            <h2>Dose per Time</h2>
+            <p>
+              <select name="doseQuantity" id="doseIntervalsPerTime">
+                <option value="1">1 pill</option>
+                <option value="2">2 pills</option>
+                <option value="3">3 pills</option>
+                <option value="4">4 pills</option>
+                <option value="5">5 pills</option>
+                <option value="6">6 pills</option>
+                <option value="7">7 pills</option>
+                <option value="8">8 pills</option>
+              </select>
+              <label for="doseIntervalsPerTime">every</label>
+              <select name="doseInterval" id="doseIntervalsPerTime">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+
+              <select name="timeMeasure" id="doseIntervalsPerTime">
+                <option value="hours">hours</option>
+                <option value="days">days</option>
+                <option value="week">week</option>
+                <option value="month">month</option>
+              </select>
+            </p>
+          </div>
 
 
-  <div>
+          <div>
+            <h2>Duration</h2>
 
-  <span>Choose start date</span>
-  <input type="string" name="startDate" id="startDate" placeholder="DD.MM.YYYY">
-  <span>Choose end date</span>
-  <input type="string" name="endDate" id="endDate" placeholder="DD.MM.YYYY">
 
-</div>  
+            <div>
 
-  {{!-- <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
+              <span>Choose start date</span>
+              <input type="string" name="startDate" id="startDate" placeholder="DD.MM.YYYY">
+              <span>Choose end date</span>
+              <input type="string" name="endDate" id="endDate" placeholder="DD.MM.YYYY">
+
+            </div>
+
+            {{!-- <input type="radio" name="duration" id="duration" value="undefined">Undefined<br>
            --}}
-          {{!-- <input type="radio" name="duration" id="duration">
+            {{!-- <input type="radio" name="duration" id="duration">
 
                   <label for="doseIntervalsPerTime">For</label>
     <select name="doseIntervalsPerTime" id="doseIntervalsPerTime">
@@ -187,67 +201,64 @@
       <option value="weeks">weeks</option>
       <option value="months">months</option>
     </select> --}}
-  </p>
-</div>
-<div class="recommendations">
-  <textarea name="recommendation" rows="10" cols="30">
+            </p>
+          </div>
+          <div class="recommendations">
+            <textarea name="recommendation" rows="10" cols="30">
 </textarea>
-</div>
+          </div>
 
-<button type="submit">add treatment</button>
-{{!-- end of modal --}}
-</div>
-  
+          <button type="submit">add treatment</button>
+          {{!-- end of modal --}}
+        </div>
+
+      </div>
+        <div>
+    <a href="/doctor/newPatient2">Back</a>
+    <a href="/doctor/newPatient4">Next</a>
   </div>
+
+
+
+  </form>
+
+
+
+
+
+  {{!-- {{/with }} --}}
+    </div>
 </div>
-
-
-</form>
-
-
-
-
-
-{{!-- {{/with }} --}}
-
-
-<div>
-<a href="/doctor/newPatient2">Back</a>
-<a href="/doctor/newPatient4">Next</a> 
-</div>
-
 
 <script>
 
 
-// Get the modal
-var modal = document.getElementById("myModal");
+  // Get the modal
+  var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
     modal.style.display = "none";
   }
-}
-  $(":radio[name=dose-per-meal]").click(function() {
-  $(this).nextAll('select').attr('disabled', !$(this).hasClass("dose-per-time"));
-});
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  $(":radio[name=dose-per-meal]").click(function () {
+    $(this).nextAll('select').attr('disabled', !$(this).hasClass("dose-per-time"));
+  });
 </script>
-
-

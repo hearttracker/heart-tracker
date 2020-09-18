@@ -1,74 +1,84 @@
-<h1>Nuevo Paciente 2</h1>
+<div class='logoHeader'>
+  <a href="/overview" id='homeButton'>
+    <div> ◀︎ Back To Patient Overview</div>
+  </a>
+  <a href="/logout">
+    <div>Logout</div>
+  </a>
+</div>
 
-{{#with currentPatient}}
-  <form action="/doctor/newPatient3" method="POST">
-  <div>
-    <div>
-      <ul>
-        <li>
-  <label for="lastUpdate">Last Update:</label>
-  <input type="string" name="lastUpdate" id="lastUpdate" value="{{lastUpdate}}" placeholder="DD.MM.YYYY">
-
-        </li>
-        <li>
-  <label for="diagnosis">Diagnosis:</label>
-  <input type="string" name="diagnosis" id="diagnosis" value="{{diagnosis}}">
-
-        </li>
-        <li>
-  <label for="totalColesterol">Total Colesterol:</label>
-  <input type="number" name="totalColesterol" id="totalColesterol" value="{{totalColesterol}}"> mg/dL
-
-        </li>
-        <li>
-    <label for="ldl">LDL:</label>
-  <input type="number" name="ldl" id="ldl" value="{{ldl}}"> mg/dL
-
-        </li>
-        <li>
-    <label for="hdl">HDL:</label>
-  <input type="number" name="hdl" id="hdl" value="{{hdl}}"> mg/dL
-        </li>
-        <li>
-    <label for="triglycerides">Triglycerides:</label>
-  <input type="number" name="triglycerides" id="triglycerides" value="{{triglycerides}}"> mg/dL 
-
-        </li>
-        <li>
-    <label for="urea">Urea:</label>
-  <input type="number" name="urea" id="urea" value="{{urea}}"> mg/dL
-
-        </li>
-        <li>
-    <label for="creatinine">Creatinine:</label>
-  <input type="number" name="creatinine" id="creatinine" value="{{creatinine}}"> mg/dL
-
-        </li>
-        <li>
-    <label for="potassium">Potassium:</label>
-  <input type="number" name="potassium" id="potassium" value="{{potassium}}"> mEg/dL
-
-        </li>
-        <li>
-    <label for="sodium">Sodium:</label>
-  <input type="number" name="sodium" id="sodium" value="{{sodium}}"> mEg/dL
-
-        </li>
-        <li>
-      <label for="basalBloodGlucose">Basal Blood Glucose:</label>
-  <input type="number" name="basalBloodGlucose" id="basalBloodGlucose" value="{{basalBloodGlucose}}"> mg/dL
-        </li>
-
-
-
+<div class='newPatientContainer'>
+<div class='newPatientForm'>
+  <div class='newPatientHeaderContainer'>
+    <h2>New Patient</h2>
+    <h4>2. Last Checkup & Allergies</h4>
   </div>
-</div>
-</ul>
-<div>
-  <label for="allergies">Allergies:</label>
-  <input type="text" name="allergies" id="allergies" value="{{allergies}}">
-</div>
-<a href="/doctor/newPatient1">back</a> <button type="submit">Next</button>
-</form>
 
-{{/with}}
+  {{#with currentPatient}}
+  <form action="/doctor/newPatient3" method="POST">
+          <div>
+            <label for="lastUpdate">Last Update:</label>
+            <input type="string" name="lastUpdate" id="lastUpdate" value="{{lastUpdate}}" placeholder="DD.MM.YYYY">
+
+          </div>
+          <div>
+            <label for="diagnosis">Diagnosis:</label>
+            <input type="string" name="diagnosis" id="diagnosis" value="{{diagnosis}}">
+
+          </div>
+          <div>
+            <label for="totalColesterol">Total Colesterol:</label>
+            <input type="number" name="totalColesterol" id="totalColesterol" value="{{totalColesterol}}"> mg/dL
+
+          </div>
+          <div>
+            <label for="ldl">LDL:</label>
+            <input type="number" name="ldl" id="ldl" value="{{ldl}}"> mg/dL
+
+          </div>
+          <div>
+            <label for="hdl">HDL:</label>
+            <input type="number" name="hdl" id="hdl" value="{{hdl}}"> mg/dL
+          </div>
+          <div>
+            <label for="triglycerides">Triglycerides:</label>
+            <input type="number" name="triglycerides" id="triglycerides" value="{{triglycerides}}"> mg/dL
+
+          </div>
+          <div>
+            <label for="urea">Urea:</label>
+            <input type="number" name="urea" id="urea" value="{{urea}}"> mg/dL
+
+          </div>
+          <div>
+            <label for="creatinine">Creatinine:</label>
+            <input type="number" name="creatinine" id="creatinine" value="{{creatinine}}"> mg/dL
+
+          </div>
+          <div>
+            <label for="potassium">Potassium:</label>
+            <input type="number" name="potassium" id="potassium" value="{{potassium}}"> mEg/dL
+
+          </div>
+          <div>
+            <label for="sodium">Sodium:</label>
+            <input type="number" name="sodium" id="sodium" value="{{sodium}}"> mEg/dL
+
+          </div>
+          <div>
+            <label for="basalBloodGlucose">Basal Blood Glucose:</label>
+            <input type="number" name="basalBloodGlucose" id="basalBloodGlucose" value="{{basalBloodGlucose}}"> mg/dL
+          </div>
+          <div>
+            <label for="allergies">Allergies:</label>
+            <input type="text" name="allergies" id="allergies" value="{{allergies}}">
+          </div>
+          <div>
+          <a href="/doctor/newPatient1">back</a> 
+          <button type="submit">Next</button>
+          </div>
+          {{/with}}
+  </form>
+</div>
+</div>
+
