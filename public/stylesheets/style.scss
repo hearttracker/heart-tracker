@@ -18,7 +18,7 @@ body {
 
 h4 {
 font-family: Heebo;
-font-size: 36px;
+font-size: 20px;
 font-style: normal;
 font-weight: 700;
 line-height: 53px;
@@ -26,7 +26,7 @@ letter-spacing: 0em;
 }
 
 h2 {
-  font-family: Heebo;
+font-family: Heebo;
 font-size: 36px;
 font-style: normal;
 font-weight: 700;
@@ -35,13 +35,9 @@ letter-spacing: 0em;
 }
 
 
-a {
-  color: #00B7FF;
-}
-
 .logoHeader {
   width: 100vw;
-  height: 50px;
+  height: 60px;
   background-color: #0d3044;
   color: white;
   text-align: center;
@@ -122,12 +118,13 @@ a {
 }
 
 #addPatient {
-  background-color: darkblue;
+  background-color: #0d3044;
   color: white;
   text-decoration: none;
   margin-top: 50px;
   margin-right: 50px;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 #searchField {
@@ -136,7 +133,11 @@ a {
 
 #overviewTable {
   width: 90vw;
-  border: 1px solid black
+  border: 1px solid grey;
+}
+
+#overviewTable th {
+  background-color: #D8DADB
 }
 
 #overviewTable th, td {
@@ -159,6 +160,7 @@ a {
   flex-wrap: wrap;
   background-color: white;
   width: 90vw;
+  height: 20vh;
   border: 1px solid grey
 }
 
@@ -270,11 +272,11 @@ a {
   display: none;
   flex-direction: row;
   position: relative;
-  width: 80%;
+  width: 100%;
   height: 100%;
   // left: 230px;
   // top: 50px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -282,6 +284,7 @@ a {
 #bloodPressureContainer {
   display: flex;
   height: 100%;
+  position: relative;
 }
 
 
@@ -293,7 +296,6 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
 }
 
 #bloodPressureGraph {
@@ -301,10 +303,15 @@ a {
   width: 50%
 }
 
+#bloodPressureTableContainer {
+  overflow: scroll;
+  height: 80%
+}
+
 #bloodPressureTable {
- height: 100%;
- width: 40%;
- overflow: scroll
+  height: 100%;
+  width: 100%;
+  margin-right: 20px
 }
 
 
@@ -312,10 +319,11 @@ a {
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 80%;
+  width: 100%;
+  height: 100%;
   // left: 230px;
   // top: 50px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
 }
@@ -323,18 +331,17 @@ a {
 #bloodSugarContainer {
   display: flex;
   height: 100%;
-  width: 100%;
-  overflow: scroll
+  position: relative;
 }
 
 #bloodSugarGraphContainer {
   width: 60%;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
 }
 
 #bloodSugarChart {
@@ -342,10 +349,14 @@ a {
   width: 50%
 }
 
+#bloodSugarTableContainer {
+  overflow: scroll;
+  height: 80%
+}
+
 #bloodSugarTable {
   height: 100%;
-  width: 50%;
-  overflow: scroll
+  width: 100%;
  }
 
  .addButton {
