@@ -90,7 +90,7 @@ router.get("/login/loggedPatientView/:id", async (req,res,next) => {
   try{
     const patient = await Patient.findById({_id:id});
 
-    let values = patient.heartFrequencyData.values.map((result,i,arr) => {
+    let values = patient.heartFrequencyData.values.map((result,i) => {
       return {
         date: result.date,
         comment: result.comment,

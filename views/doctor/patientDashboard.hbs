@@ -1,157 +1,180 @@
-<div class='patientHeader'>
-  <div id='contactInfo'>
-    <span>Patient Name: {{patient.firstName}} {{patient.lastName}}</span> <span>Birthdate: {{patient.birthDate}}</span> <span>Patient
-      ID: {{patient.patientId}}</span>
-    <span>TIS: {{patient.healthInsuranceId}}</span> <span>Telephone: {{patient.contact.telephone}}</span> <span>Email:
-      {{patient.contact.email}}</span>
-      <span>
-        <a href="/overview">Patient Overview</a><br>
-        <a href="/logout">Logout</a>
-      <span>
+<div style="display:none" id='hiddenId'>{{patient._id}}</div>
+
+<div id='dashboardContainer'>
+  <div class='logoHeader'>
+    <a href="/overview" id='homeButton'>
+      <div> ◀︎ Back To Patient Overview</div>
+    </a>
+    <a href="/logout">
+      <div>Logout</div>
+    </a>
   </div>
 
-  <div style="display:none" id='hiddenId'>{{patient._id}}</div>
+  <div id='patientHeader'>
+    <div id='patientInfo'>
+    <div class='infoHeader' id='contactInfo'>
+      <h4>Patient Details</h4>
+      <div>
+        <span>{{patient.firstName}} {{patient.lastName}}</span> <span>
+          {{patient.birthDate}}</span> <span>
+          ID: {{patient.patientId}}</span>
+        <span>TIS: {{patient.healthInsuranceId}}</span> <span>{{patient.contact.telephone}}</span>
+        <span>
+          {{patient.contact.email}}</span>
+      </div>
+      </div>
+      <div class='infoHeader' id='allergyInfo'>
+      <h4>Recorded Allergies</h4>
+      <div>
+        <span>{{patient.allergies}}</span> 
+      </div>
+    </div>
 
-  <div id='patientValues'>
-    <div class='measurements'>
-      <h6>Last Measurements</h6>
-      <table>
-        <thead>
-          <tr>
-            <th>Cholesterol</th>
-            <th>LDL</th>
-            <th>HDL</th>
-            <th>Triglycerides</th>
-            <th>Urea</th>
-            <th>Creatine</th>
-            <th>Potassium</th>
-            <th>Sodium</th>
-            <th>Basal glycemia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{patient.lastMeasurements.totalColesterol}}</td>
-            <td>{{patient.lastMeasurements.ldl}}</td>
-            <td>{{patient.lastMeasurements.hdl}}</td>
-            <td>{{patient.lastMeasurements.triglycerides}}</td>
-            <td>{{patient.lastMeasurements.urea}}</td>
-            <td>{{patient.lastMeasurements.creatinine}}</td>
-            <td>{{patient.lastMeasurements.potassium}}</td>
-            <td>{{patient.lastMeasurements.sodium}}</td>
-            <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class='measurements'>
-      <h6>Allergies:</h6>
-      <p>{{patient.allergies}}</p>
-    </div>
-  </div>
-</div>
-
-<div class='graphContainer'>
-  <div id='treatmentsContainer' class='treatment'>
-    <h5>Treatments</h5>
-    {{#each patient.treatments}}
-    <button type="button" class="collapsible">{{name}}</button>
-    <div class="content">
-      <p>Type of Drug:</p>
-    <div>
-      <h4>Dose</h4>
-      {{#if doseMeals.isSelected}}
-      Breakfast: {{doseMeals.breakfast}}
-      Lunch: {{doseMeals.lunch}}
-      Dinner: {{doseMeals.dinner}}
-      Night: {{doseMeals.night}}
-      {{else}}
-      {{doseTime.quantity}} pieces each {{doseTime.intervall}}
-      {{doseTime.timeMeasure}}
-      {{/if}}
-      <p></p>
-    </div>
-    <div>
-      <h4>Duration</h4>
-      <p>From {{dateFormat startDate "d, MMM, YYYY"}} To
-        {{dateFormat endDate "DD, MMM, YYYY"}}</p>
-    </div>
-    <div>
-      <h4>Recommendations</h4>
-      <p>{{recommendation}}</p>
-    </div>
-    </div>
-  {{/each}}
-    
-  </div>
-  <div id='bpBsContainer'>
-  <div class='treatment' id='bpBsHeader'>
-    <button class='nextButton' id='bsNext'><p>>>Blood Pressure & Heart Frequency</p></button>
-    <button class='nextButton' id='bpNext'><p>>>Blood Sugar</p></button>
-  </div>
-  <div class='treatment' id='bloodPressureParent'>
-    {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
-    <div id='bloodPressureContainer'>
-    <div id='bloodPressureGraphContainer'>
-    <canvas id="bloodPressureGraph"></canvas>
-    <button id="bpButton">+</button>
     </div>
     
-    <div id='bloodPressureTable'>
-    <table class='table'>
-      <thead>
-        <th>Date</th>
-        <th>Blood Pressure</th>
-        <th>Comment</th>
-      </thead>
-      <tbody>
-        {{#each patient.bloodPressureData.values}}
-        <tr>
-        <td>{{removeYear date}}</td>
-        <td>{{systolic}}/{{diastolic}}</td>
-        <td>{{comment}}</td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
 
+
+    <div id='patientValues'>
+      <div class='infoHeader'>
+        <h4>Last Checkup ({{patient.lastUpdate}})</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Cholesterol</th>
+              <th>LDL</th>
+              <th>HDL</th>
+              <th>Triglycerides</th>
+              <th>Urea</th>
+              <th>Creatine</th>
+              <th>Potassium</th>
+              <th>Sodium</th>
+              <th>Basal glycemia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{patient.lastMeasurements.totalColesterol}}</td>
+              <td>{{patient.lastMeasurements.ldl}}</td>
+              <td>{{patient.lastMeasurements.hdl}}</td>
+              <td>{{patient.lastMeasurements.triglycerides}}</td>
+              <td>{{patient.lastMeasurements.urea}}</td>
+              <td>{{patient.lastMeasurements.creatinine}}</td>
+              <td>{{patient.lastMeasurements.potassium}}</td>
+              <td>{{patient.lastMeasurements.sodium}}</td>
+              <td>{{patient.lastMeasurements.basalBloodGlucose}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    </div>
-    
   </div>
 
-  <div class='treatment' id='bloodSugarParent'>
-    {{!-- <h5>Blood Sugar</h5> --}}
-    <div id='bloodSugarContainer'>
-    <div id='bloodSugarGraphContainer'>
-         <canvas id="bloodSugarChart"></canvas>
-          <button id="bsButton">+</button>
+  <div class='graphContainer'>
+    <div id='treatmentsContainer' class='treatment'>
+      <h5>Treatments</h5>
+      {{#each patient.treatments}}
+      <button type="button" class="collapsible">{{name}}</button>
+      <div class="content">
+        <p>Type of Drug:</p>
+        <div>
+          <h4>Dose</h4>
+          {{#if doseMeals.isSelected}}
+          Breakfast: {{doseMeals.breakfast}}
+          Lunch: {{doseMeals.lunch}}
+          Dinner: {{doseMeals.dinner}}
+          Night: {{doseMeals.night}}
+          {{else}}
+          {{doseTime.quantity}} pieces each {{doseTime.intervall}}
+          {{doseTime.timeMeasure}}
+          {{/if}}
+          <p></p>
+        </div>
+        <div>
+          <h4>Duration</h4>
+          <p>From {{startDate}} To
+            {{endDate}}</p>
+        </div>
+        <div>
+          <h4>Recommendations</h4>
+          <p>{{recommendation}}</p>
+        </div>
+      </div>
+      {{/each}}
+      <div style="display:none" id='hiddenDisplayToggle'>{{display}}</div>
     </div>
-    
-     <div id='bloodSugarTable'>
-    <table class='table'>
-      <thead>
-        <th>Date</th>
-        <th>Blood Pressure</th>
-        <th>Comment</th>
-      </thead>
-      <tbody>
-        {{#each patient.bloodSugarData.values}}
+    <div id='bpBsContainer'>
+      <div class='treatment' id='bpBsHeader'>
+        <button class='nextButton' id='bsNext'>
+          <p>Blood Pressure / Heart Frequency</p>
+        </button>
+        <button class='nextButton' id='bpNext'>
+          <p>Blood Sugar</p>
+        </button>
+      </div>
+      <div class='treatment' id='bloodPressureParent'>
+        {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
+        <div id='bloodPressureContainer'>
+          <div id='bloodPressureGraphContainer'>
+            <canvas id="bloodPressureGraph"></canvas>
+            <button id="bpButton">+</button>
+          </div>
+
+          <div id='bloodPressureTable'>
+            <table class='table'>
+              <thead>
+                <th>Date</th>
+                <th>Blood Pressure</th>
+                <th>Comment</th>
+              </thead>
+              <tbody>
+                {{#each patient.bloodPressureData.values}}
+                <tr>
+                  <td>{{removeYear date}}</td>
+                  <td>{{systolic}}/{{diastolic}}</td>
+                  <td>{{comment}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class='treatment' id='bloodSugarParent'>
+        {{!-- <h5>Blood Sugar</h5> --}}
+        <div id='bloodSugarContainer'>
+          <div id='bloodSugarGraphContainer'>
+            <canvas id="bloodSugarChart"></canvas>
+            <button id="bsButton">+</button>
+          </div>
+
+          <div id='bloodSugarTable'>
+            <table class='table'>
+              <thead>
+                <th>Date</th>
+                <th>Blood Pressure</th>
+                <th>Comment</th>
+              </thead>
+              <tbody id='bloodSugarTableBody'>
+                {{!-- {{#each patient.bloodSugarData.values}}
         <tr>
         <td>{{removeYear date}}</td>
         <td>{{value}}</td>
         <td>{{comment}}</td>
         </tr>
-        {{/each}}
-      </tbody>
-    </table>
-     
-    </div>
-  </div>
-  
-  </div>
-  </div>
+        {{/each}} --}}
+              </tbody>
+            </table>
 
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -165,7 +188,8 @@
     <form action='/patient/{{patient._id}}' method='POST'>
       <input type="hidden" name="hidden" value="bloodPressure">
       <label for="bloodPressure">Systolic/Diastolic:</label>
-      <input type="number" name="systolic" id="bloodPressure" required> / <input type="number" name="diastolic" id="bloodPressure" required>
+      <input type="number" name="systolic" id="bloodPressure" required> / <input type="number" name="diastolic"
+        id="bloodPressure" required>
       <label for="heartFrequency">Heart Frequency</label>
       <input type="number" name="heartFrequency" id="heartFrequency">
       <label for="date">Date</label>
@@ -185,7 +209,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h5>Add new Blood Sugar Value</h5>
-      <form action='/patient/{{patient._id}}' method='POST'>
+    <form action='/patient/{{patient._id}}' method='POST'>
       <input type="hidden" name="hidden" value="bloodSugar">
       <label for="bloodSugar">Blood Sugar:</label>
       <input type="number" name="bloodSugar" required>
@@ -198,6 +222,7 @@
   </div>
 
 </div>
+
 
 <script src='/javascripts/buttons.js'></script>
 <script src='/javascripts/chart.js'></script>

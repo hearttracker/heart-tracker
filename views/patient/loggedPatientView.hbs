@@ -1,11 +1,18 @@
+<div id='loggedPatientContainer'>
 {{#with patient}}
-<h1>hello {{firstName}} {{lastName}}</h1>
- <div style="display:none" id='hiddenId'>{{_id}}</div>
-<canvas id="bloodPressureGraph"></canvas>
+<h1>Welcome to your Corvis Dashboard, {{firstName}} {{lastName}}!</h1>
+<div style="display:none" id='hiddenId'>{{_id}}</div>
 {{/with}}
 
+<div id='patientGraphContainer'>
+<div id='bloodPressureGraphContainer'>
+<canvas id="bloodPressureGraph"></canvas>
+</div>
+<div id='bloodSugarGraphContainer'>
 <canvas id="bloodSugarChart"></canvas>
-<div>
+</div>
+</div>
+
 <button type="submit" id="myBtn">Add new results</button>
 
 
@@ -121,7 +128,7 @@
 
 {{/with}}
 
-
+</div>
 
 
 <script>

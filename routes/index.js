@@ -37,7 +37,8 @@ router.get('/patient/:id', isLoggedIn(), (req, res, next) => {
       return Date.parse(b.date) - Date.parse(a.date);
     });
     res.render('doctor/patientDashboard', {
-      patient: patient
+      patient: patient,
+      display: 'bloodPressure'
     });
   })
   .catch(err => next(err));
@@ -77,7 +78,8 @@ router.post('/patient/:id', (req, res, next) => {
     .populate('treatments')
     .then(patient => {
       res.render(`doctor/patientDashboard`, {
-        patient: patient
+        patient: patient,
+        display: 'bloodPressure'
       });
     }
   )
@@ -95,9 +97,11 @@ else if(req.body.hidden === 'bloodSugar') {
       }
     }
   })
+  .populate('treatments')
   .then(patient => {
     res.render(`doctor/patientDashboard`, {
-      patient: patient
+      patient: patient,
+      display: 'bloodSugar'
     });
   }
 )

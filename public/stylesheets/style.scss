@@ -1,13 +1,39 @@
 body, html {
   margin: 0;
+  height: 100vh;
+  width: 100vw;
+
 }
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 90vh;
-  width: 100vw;
+  font-family: 'Heebo', sans-serif;
   display: flex;
   flex-direction: column;
+  font-family: Heebo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
 }
+
+h4 {
+font-family: Heebo;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: 53px;
+letter-spacing: 0em;
+}
+
+h2 {
+  font-family: Heebo;
+font-size: 36px;
+font-style: normal;
+font-weight: 700;
+line-height: 53px;
+letter-spacing: 0em;
+}
+
 
 a {
   color: #00B7FF;
@@ -15,22 +41,32 @@ a {
 
 .logoHeader {
   width: 100vw;
-  height: 5vh;
-  background-color: darkblue;
+  height: 50px;
+  background-color: #0d3044;
   color: white;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
+  background-image: url('/images/corvislogo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8%;
 }
 
 .logoHeader a {
   color: white;
   text-decoration: none;
   padding-right: 10px;
+  margin: 15px;
 }
 
+
+.linkContainer {
+  display: flex;
+  flex-direction: row;
+}
 
 .modal {
   display: none; /* Hidden by default */
@@ -109,36 +145,62 @@ a {
 
 
 /*Dashboard Styling */
-#contactInfo {
+#dashboardContainer {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
-  width: 90vw;
-  height: 5vh;
-  background-color: rgba(165, 152, 152, 1);
+  flex-direction: column;
+  align-items: center;
 }
+
+#patientHeader {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: white;
+  width: 90vw;
+  border: 1px solid grey
+}
+
+#patientHeader h4 {
+  color: #3185b3;
+}
+
+.infoHeader {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5px;
+  padding: 5px
+}
+
+#patientInfo {
+  display: flex;
+  flex-direction: row;
+}
+
+
 
 #contactInfo span {
   width: 16%;
+  text-align: center;
+  margin-right: 10px
 }
 
 #patientValues {
   display: flex;
   justify-content: align-items;
-  width: 90vw;
-  background-color: lightgray;
+  width: 100%
 }
 
 #patientValues table {
   width: 100%
 }
 
-.measurements {
-  margin: 10px;
-}
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
-  background-color: #eee;
+  background-color: rgba(167, 160, 160, 1);
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -158,9 +220,9 @@ a {
 .content {
   padding: 0 18px;
   display: none;
-  overflow: scroll;
+  // overflow: scroll;
   background-color: #f1f1f1;
-  width: 100%
+  width: 80%
 }
 
 
@@ -173,38 +235,45 @@ a {
   position: relative;
 }
 
-.treatment {
-  overflow: scroll;
-}
 
 #treatmentsContainer {
   width: 20%;
+  height: 100%;
   display: flex;
+  margin: 10px;
   flex-direction: column;
-  justify-content: center
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  border: 1px solid grey
 }
+
 
 
 #bpBsContainer {
   display: flex;
   flex-direction: column;
-  width: 100%
+  width: 100%;
+  border: 1px solid grey;
+  margin: 10px
 }
 
 #bpBsHeader {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
 }
 
 
 #bloodPressureParent {
   display: none;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 80%;
-  left: 260px;
-  top: 50px;
+  height: 100%;
+  // left: 230px;
+  // top: 50px;
   justify-content: center;
   align-items: center;
 }
@@ -213,17 +282,18 @@ a {
 #bloodPressureContainer {
   display: flex;
   height: 100%;
-  width: 100%
 }
 
 
 #bloodPressureGraphContainer {
   width: 60%;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 #bloodPressureGraph {
@@ -232,27 +302,29 @@ a {
 }
 
 #bloodPressureTable {
- overflow: scroll;
  height: 100%;
- width: 50%;
+ width: 40%;
+ overflow: scroll
 }
 
 
 #bloodSugarParent {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 80%;
-  left: 260px;
-  top: 50px;
+  // left: 230px;
+  // top: 50px;
   justify-content: center;
   align-items: center;
+
 }
 
 #bloodSugarContainer {
   display: flex;
   height: 100%;
-  width: 100%
+  width: 100%;
+  overflow: scroll
 }
 
 #bloodSugarGraphContainer {
@@ -262,6 +334,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 #bloodSugarChart {
@@ -270,9 +343,9 @@ a {
 }
 
 #bloodSugarTable {
-  overflow: scroll;
   height: 100%;
   width: 50%;
+  overflow: scroll
  }
 
  .addButton {
@@ -291,50 +364,32 @@ a {
   width: 50%;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  padding: 5px;
 }
 
-//  /* The Modal (background) */
-// .modal {
-//   display: none; /* Hidden by default */
-//   position: fixed; /* Stay in place */
-//   z-index: 1; /* Sit on top */
-//   padding-top: 100px; /* Location of the box */
-//   left: 0;
-//   top: 0;
-//   width: 100%; /* Full width */
-//   height: 100%; /* Full height */
-//   overflow: auto; /* Enable scroll if needed */
-//   background-color: rgb(0,0,0); /* Fallback color */
-//   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-// }
+.button-clicked {
+  background-color: darkgray
+}
 
-// /* Modal Content */
-// .modal-content {
-//   background-color: #fefefe;
-//   margin: auto;
-//   padding: 20px;
-//   border: 1px solid #888;
-//   width: 40%;
-// }
-
-// /* The Close Button */
-// .close {
-//   color: #aaaaaa;
-//   float: right;
-//   font-size: 28px;
-//   font-weight: bold;
-
-// }
-
-// .close:hover,
-// .close:focus {
-//   color: #000;
-//   text-decoration: none;
-//   cursor: pointer;
-// }
 
 #qrcode {
   border: 1px solid black;
   height: 250px; 
+}
+
+/* LoggedPatientView Styling */
+
+#loggedPatientContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#patientGraphContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
