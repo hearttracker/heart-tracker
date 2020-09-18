@@ -71,7 +71,7 @@
 
   <div class='graphContainer'>
     <div id='treatmentsContainer' class='treatment'>
-      <h5>Treatments</h5>
+      <h2>Treatments</h2>
       {{#each patient.treatments}}
       <button type="button" class="collapsible">{{name}}</button>
       <div class="content">
@@ -113,14 +113,13 @@
       </div>
       <div class='treatment' id='bloodPressureParent'>
         {{!-- <h5>Blood Pressure and Heart Frequency</h5> --}}
-        <div id='bloodPressureContainer'>
           <div id='bloodPressureGraphContainer'>
             <canvas id="bloodPressureGraph"></canvas>
             <button id="bpButton">+</button>
           </div>
 
-          <div id='bloodPressureTable'>
-            <table class='table'>
+          <div id='bloodPressureTableContainer'>
+            <table id='bloodPressureTable' class='table'>
               <thead>
                 <th>Date</th>
                 <th>Blood Pressure</th>
@@ -138,38 +137,28 @@
             </table>
 
           </div>
-        </div>
 
       </div>
 
       <div class='treatment' id='bloodSugarParent'>
         {{!-- <h5>Blood Sugar</h5> --}}
-        <div id='bloodSugarContainer'>
           <div id='bloodSugarGraphContainer'>
             <canvas id="bloodSugarChart"></canvas>
             <button id="bsButton">+</button>
           </div>
 
-          <div id='bloodSugarTable'>
-            <table class='table'>
+          <div id='bloodSugarTableContainer'>
+            <table id='bloodSugarTable' class='table'>
               <thead>
                 <th>Date</th>
                 <th>Blood Pressure</th>
                 <th>Comment</th>
               </thead>
               <tbody id='bloodSugarTableBody'>
-                {{!-- {{#each patient.bloodSugarData.values}}
-        <tr>
-        <td>{{removeYear date}}</td>
-        <td>{{value}}</td>
-        <td>{{comment}}</td>
-        </tr>
-        {{/each}} --}}
               </tbody>
             </table>
 
           </div>
-        </div>
 
       </div>
     </div>
