@@ -30,6 +30,39 @@ h2 {
   line-height: 53px;
   letter-spacing: 0em; }
 
+#startScreen {
+  background-color: #0d3044;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; }
+
+#startScreen img {
+  width: 40vw; }
+
+#startScreen a {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #0d3044;
+  border: 1px solid #DE704C; }
+
+#startScreen h4 {
+  padding-left: 30px;
+  padding-right: 30px; }
+
+#startScreen button {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #0d3044;
+  border: 1px solid #DE704C;
+  padding-left: 30px;
+  padding-right: 30px; }
+
 .logoHeader {
   width: 100vw;
   height: 60px;
@@ -133,6 +166,35 @@ h2 {
 
 #overviewTable th, td {
   padding: 10px; }
+
+/* New Patient Styling */
+.newPatientContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center; }
+
+.newPatientForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 50vw;
+  height: 60wh;
+  border: 1px solid grey; }
+
+.newPatientForm form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 5px; }
+
+.newPatientForm div {
+  margin: 10px;
+  padding: 5px; }
 
 /*Dashboard Styling */
 #dashboardContainer {

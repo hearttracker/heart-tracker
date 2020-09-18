@@ -1,12 +1,19 @@
+<div class='logoHeader'>
+  <a href="/overview" id='homeButton'>
+    <div> ◀︎ Back To Patient Overview</div>
+  </a>
+  <a href="/logout">
+    <div>Logout</div>
+  </a>
+</div>
+<h2>Patient profile for {{patient.firstName}} {{patient.lastName}} has been created</h2>
 
-<h1>Patient profile for {{firstName}} {{lastName}} has been created</h1>
 
 
+<h2>The patient's PIN for login into the patient application is: {{patient.patientPin}}</h2>
 
-<h1>pin code of the patient is: {{patient.patientPin}}</h1>
 
-<a href="/patient/{{patient._id}}">dashboard</a>
-
+<a href="/patient/{{patient._id}}">Go to Patient Dashboard</a>
 
 
 

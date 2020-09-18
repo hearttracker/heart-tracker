@@ -1,12 +1,26 @@
-<h2>Nuevo Patient</h2>
-<h3>Configuration</h3>
-<div class="container">
-  <form action="/doctor/newPatient4" method="POST">
-<div>
+<div class='logoHeader'>
+  <a href="/overview" id='homeButton'>
+    <div> ◀︎ Back To Patient Overview</div>
+  </a>
+  <a href="/logout">
+    <div>Logout</div>
+  </a>
+</div>
 
+<div class='newPatientContainer'>
+  <div class='newPatientForm'>
+    <div class='newPatientHeaderContainer'>
+<h2>New Patient</h2>
+<h4>4. Settings</h4>
 <h4>Measures to be registered</h4>
+</div>
+
+  <form action="/doctor/newPatient4" method="POST">
 
 
+
+
+<div>
 <input type="checkbox" name="bloodPressureMeasured" value="true"> blood pressure<br>
   <div class="dropdown">
     <label for="minBloodPressure">Min</label>
@@ -16,7 +30,8 @@
 <label for="targetObjetiveBloodPressure">Target Objective</label>
 <input type="text" name="targetObjetiveBloodPressure">
   </div>
-
+  </div>
+<div>
 <input type="checkbox" value="true" name="heartRateMeasured"> heart rate <br>
   <div class="dropdown">
     <label for="minHeartRate">Min</label>
@@ -26,7 +41,8 @@
 <label for="targetObjetiveHeartRate">Target Objective</label>
 <input type="number" name="targetObjetiveHeartRate">bpm
   </div>
-
+</div>
+<div>
 <input type="checkbox" value="true" name="bloodGlucoseMeasured"> blood glucose
   <div class="dropdown">
     <label for="minBloodGlucose">Min</label>
@@ -36,9 +52,9 @@
 <label for="targetObjetiveBloodGlucose">Target Objective</label>
 <input type="number" name="targetObjetiveBloodGlucose">mg/dl
   </div>
-</div>
+  </div>
 <div>
-  <h2>Alert Level</h2>
+  <h4>Alert Level</h4>
   <select name="alert" id="alert">
     <option value="Low">Low</option>
     <option value="Medium">Medium</option>
@@ -46,16 +62,17 @@
   </select>
 </div>
 <div>
-  <h2>Notifications</h2>
+  <h4>Notifications</h4>
   <input type="radio" name="notification" value="Never">Never
   <input type="radio" name="notification" value="Data out of range">Data out of range
   <input type="radio" name="notification" value="Always">Always
 </div>
-</div>
+<div>
 <a href="/doctor/newPatient3">Back</a>
 <button type="submit">Finish</button>
+</div>
 </form>
-
+</div>
 </div>
 
 

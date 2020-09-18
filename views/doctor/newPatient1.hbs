@@ -1,34 +1,57 @@
-<h1>Nuevo Paciente</h1>
-{{!-- {{#with currentPatient}} --}}
-<div>
-  <form action="/doctor/newPatient2" method="POST">
-  <div>
-  <label for="firstName">First Name:</label>
-  <input type="text" name="firstName" id="firstName" value="{{currentPatient.firstName}}" required>
-
-    <label for="lastName">Last Name:</label>
-  <input type="text" name="lastName" id="lastName" value="{{currentPatient.lastName}}" required>
-
-    <label for="secondLastName">Second Last Name:</label>
-  <input type="text" name="secondLastName" id="secondLastName" value="{{currentPatient.secondLastName}}">
-
-    <label for="birthDate">Date of birth:</label>
-  <input type="string" name="birthDate" id="birthDate" placeholder="DD.MM.YYYY" value="{{birthDate}}" required>
+<div class='logoHeader'>
+  <a href="/overview" id='homeButton'>
+    <div> ◀︎ Back To Patient Overview</div>
+  </a>
+  <a href="/logout">
+    <div>Logout</div>
+  </a>
 </div>
-<div>
-    <label for="id">ID:</label>
-  <input type="number" name="id" id="id" value="{{currentPatient.id}}">
 
-    <label for="tis">TIS:</label>
-  <input type="number" name="tis" id="tis" value="{{currentPatient.tis}}">
+<div class='newPatientContainer'>
+  <div class='newPatientForm'>
+    <div class='newPatientHeaderContainer'>
+      <h2>New Patient</h2>
+      <h4>1. Personal Details</h4>
+    </div>
 
-    <label for="phoneNumber">Phone:</label>
-  <input type="number" name="phoneNumber" id="phoneNumber" value="{{currentPatient.phoneNumber}}">
-
-    <label for="email">Email:</label>
-  <input type="text" name="email" id="email" value="{{currentPatient.email}}" required>
+    {{!-- {{#with currentPatient}} --}}
+    <form action="/doctor/newPatient2" method="POST">
+      <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" value="{{currentPatient.firstName}}" required>
+      </div>
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" value="{{currentPatient.lastName}}" required>
+      </div>
+      <div>
+        <label for="secondLastName">Second Last Name:</label>
+        <input type="text" name="secondLastName" id="secondLastName" value="{{currentPatient.secondLastName}}">
+      </div>
+      <div>
+        <label for="birthDate">Date of birth:</label>
+        <input type="string" name="birthDate" id="birthDate" placeholder="DD.MM.YYYY" value="{{birthDate}}" required>
+      </div>
+      <div>
+        <label for="id">ID:</label>
+        <input type="number" name="id" id="id" value="{{currentPatient.id}}">
+      </div>
+      <div>
+        <label for="tis">TIS:</label>
+        <input type="number" name="tis" id="tis" value="{{currentPatient.tis}}">
+      </div>
+      <div>
+        <label for="phoneNumber">Phone:</label>
+        <input type="number" name="phoneNumber" id="phoneNumber" value="{{currentPatient.phoneNumber}}">
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" value="{{currentPatient.email}}" required>
+      </div>
+      <div>
+      <button type="submit">Next</button>
+      </div>
+    </form>
+    {{!-- {{/with}} --}}
   </div>
 </div>
-<button type="submit">Next</button>
-  </form>
-  {{!-- {{/with}} --}}
